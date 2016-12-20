@@ -7,7 +7,7 @@ import java.util.UUID;
  */
 public class UniqueIdGenerator {
 
-    private UUID generateUUID() {
+    public static UUID generateUUID() {
         UUID idOne = UUID.randomUUID();
         return idOne;
     }
