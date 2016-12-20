@@ -3,33 +3,35 @@ package com.loca.addressbook.userinterface.commands;
 import java.util.List;
 
 import com.loca.addressbook.registry.Registry;
-import com.loca.addressbook.userinterface.exceptions.InvalidCommandParameterException;
+import com.loca.addressbook.userinterface.ConsolePrinter;
+import com.loca.addressbook.exceptions.InvalidCommandParameterException;
 
 public class AddContactCommand implements Command {
+
+	private CommandType commandType = CommandType.ADD;
+	private Registry registry;
+	private List<String> parameters;
+	private ConsolePrinter consolePrinter;
 	
-	private static final int REQUIRED_PARAMETERS_COUNT = 3;
-	CommandType commandType = CommandType.ADD;
-	Registry registry;
-	List<String> parameters;
-	
-	public AddContactCommand (Registry registry, List<String> parameters) {
+	public AddContactCommand (ConsolePrinter consolePrinter, Registry registry, List<String> parameters) {
+	    this.consolePrinter = consolePrinter;
 		this.registry = registry;
 		this.parameters = parameters;
 	}
 	
     @Override
     public String getName() {
-        return null;
+        return commandType.getCommandName();
     }
 
     @Override
     public String getDescription() {
-        return null;
+        return commandType.getDescription();
     }
 
     @Override
     public void execute() throws InvalidCommandParameterException {
-    	if (parameters.size() != REQUIRED_PARAMETERS_COUNT) {
+    	if (parameters.size() != commandType.getArgumentCount()) {
     		throw new InvalidCommandParameterException();
     	}
     	addContactToRegistry();
@@ -40,6 +42,7 @@ public class AddContactCommand implements Command {
     	String lastName = parameters.get(1);
     	String email = parameters.get(2);
     	registry.addContact(firstName, lastName, email);
+    	consolePrinter.print(commandType.getSuccessMessage());
 	}
     
 }

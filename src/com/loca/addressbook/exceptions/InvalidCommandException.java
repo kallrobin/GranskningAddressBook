@@ -1,4 +1,4 @@
-package com.loca.addressbook.userinterface.exceptions;
+package com.loca.addressbook.exceptions;
 
 public class InvalidCommandException extends Exception {
 }

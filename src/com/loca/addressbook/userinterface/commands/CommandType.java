@@ -9,22 +9,22 @@ public enum CommandType {
 	HELP(	"help",		0,	"Show help information",	"Showed help information.",	"Help request failed!"),
 	QUIT(	"quit",		0,	"Quit program",				"Quitting...",				"Quit request failed");
 	
-	private String commandText;
+	private String commandName;
 	private String description;
 	private int argumentCount;
 	private String successMessage;
 	private String failureMessage;
 	
-	private CommandType(String commandText, int argumentCount, String helpText, String successMessage, String failMessage) {
-		this.commandText = commandText;
+	private CommandType(String commandName, int argumentCount, String description, String successMessage, String failMessage) {
+		this.commandName = commandName;
 		this.argumentCount = argumentCount;
-		this.description = helpText;
+		this.description = description;
 		this.successMessage = successMessage;
 		this.failureMessage = failMessage;
 	}
 	
-	public String getCommandText() {
-		return commandText;
+	public String getCommandName() {
+		return commandName;
 	}
 	
 	public int getArgumentCount() {

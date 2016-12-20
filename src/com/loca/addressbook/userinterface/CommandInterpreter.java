@@ -1,13 +1,22 @@
 package com.loca.addressbook.userinterface;
 
+import com.loca.addressbook.registry.Registry;
 import com.loca.addressbook.userinterface.commands.*;
-import com.loca.addressbook.userinterface.exceptions.InvalidCommandException;
+import com.loca.addressbook.exceptions.InvalidCommandException;
+
+import java.util.List;
 
 public class CommandInterpreter {
-	
-	public Command interpret(CommandLine commandLine) throws InvalidCommandException {
+
+    private Registry registry;
+
+    public CommandInterpreter(Registry registry) {
+        this.registry = registry;
+    }
+
+    public Command interpret(CommandLine commandLine) throws InvalidCommandException {
         CommandType commandType = findCommandType(commandLine.getCommand());
-        Command command = createCommand(commandType);
+        Command command = createCommand(commandType, commandLine.getParameters());
         return command;
 	}
 
@@ -25,26 +34,26 @@ public class CommandInterpreter {
         return inputCommandType;
     }
 
-    private Command createCommand(CommandType commandType) {
+    private Command createCommand(CommandType commandType, List<String> parameters) {
 	    Command command = null;
 	    switch (commandType) {
             case ADD:
-                // command = new AddContactCommand();
+                //command = new AddContactCommand(registry, parameters);
                 break;
             case LIST:
-                command = new ListCommand();
+                //command = new ListCommand(registry, parameters);
                 break;
             case DELETE:
-                command = new DeleteContactCommand();
+                //command = new DeleteContactCommand(registry, parameters);
                 break;
             case HELP:
-                command = new HelpCommand();
+                //command = new HelpCommand(parameters);
                 break;
             case SEARCH:
-                command = new SearchCommand();
+                //command = new SearchCommand(registry, parameters);
                 break;
             case QUIT:
-                command = new QuitCommand();
+                //command = new QuitCommand(parameters);
                 break;
         }
 
