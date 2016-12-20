@@ -10,7 +10,7 @@ public class LocalContact implements Contact {
     private UUID id;
     private ContactDetails contactDetails;
 
-    public LocalContact(String firstName, String lastname, String email ) {
+    public LocalContact(String firstName, String lastname, String email, UUID id ) {
         contactDetails = new ContactDetails(firstName,lastname,email);
     }
 
