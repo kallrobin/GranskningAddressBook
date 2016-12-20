@@ -1,6 +1,7 @@
 package com.loca.addressbook.registry;
 
 import com.loca.addressbook.exceptions.InvalidContactId;
+import com.loca.addressbook.exceptions.NoSearchMatchedException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,8 +12,6 @@ import java.util.List;
 public class Registry {
 
     List<Contact> localRegistry = new ArrayList<>();
-    List<Contact> tempRegistry = new ArrayList<>();
-
 
     public void addContact(String firstName, String lastName, String email) {
 
@@ -34,11 +33,21 @@ public class Registry {
            i++;
         }
         throw new InvalidContactId();
-
     }
 
-    public List<Contact> search(String search) {
-
+    public List<Contact> search(String search) throws NoSearchMatchedException {
+        List<Contact> tempRegistry = new ArrayList <>();
+        for (Contact contact : localRegistry){
+            if(contact.getFirstName().toLowerCase().startsWith(search) ||
+                    contact.getLastName().toLowerCase().startsWith(search)){
+                tempRegistry.add(contact);
+            }
+        }
+        if (tempRegistry.isEmpty())
+            throw new NoSearchMatchedException();
+        else{
+            return tempRegistry;
+        }
     }
 
     public void load() {
