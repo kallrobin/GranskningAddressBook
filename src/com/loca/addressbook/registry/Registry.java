@@ -1,5 +1,7 @@
 package com.loca.addressbook.registry;
 
+import com.loca.addressbook.exceptions.InvalidContactId;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,7 +23,8 @@ public class Registry {
         return this.localRegistry;
     }
 
-    public void deleteContact(String uuid) {
+    public void deleteContact(String uuid) throws InvalidContactId {
+
         int i = 0;
         for (Contact contact : localRegistry) {
             if (contact.getId().equals(uuid)) {
@@ -30,10 +33,12 @@ public class Registry {
             }
            i++;
         }
+        throw new InvalidContactId();
+
     }
 
     public List<Contact> search(String search) {
-        return null;
+
     }
 
     public void load() {

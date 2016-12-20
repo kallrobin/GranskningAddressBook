@@ -1,9 +1,12 @@
-package com.loca.addressbook.registry;
+package com.loca.addressbook.remoteregistry;
+
+import com.loca.addressbook.registry.Contact;
+import com.loca.addressbook.registry.ContactDetails;
 
 /**
  * Created by katan on 2016-12-20.
  */
-public class RemoteContact implements Contact{
+public class RemoteContact implements Contact {
     private String uuid;
     private ContactDetails contactDetails;
 
