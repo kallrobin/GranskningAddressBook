@@ -16,6 +16,7 @@ public class AutoSave implements Runnable {
     @Override
     public void run() {
         Thread.currentThread().setName("AutoSave");
+        registryPersister.load();;
         while (true) {
             try {
                 Thread.sleep(5000);
