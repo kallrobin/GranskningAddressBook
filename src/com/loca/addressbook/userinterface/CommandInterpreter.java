@@ -14,7 +14,7 @@ public class CommandInterpreter {
     private CommandType findCommandType(String command) throws InvalidCommandException {
 	    CommandType inputCommandType = null;
 	    for (CommandType commandType: CommandType.values()) {
-	        if (commandType.toString().equals(command)) {
+	        if (commandType.getDescription().equals(command)) {
 	            inputCommandType = commandType;
 	            break;
             }
@@ -29,7 +29,7 @@ public class CommandInterpreter {
 	    Command command = null;
 	    switch (commandType) {
             case ADD:
-                command = new AddContactCommand();
+                // command = new AddContactCommand();
                 break;
             case LIST:
                 command = new ListCommand();
