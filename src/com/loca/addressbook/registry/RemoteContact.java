@@ -13,21 +13,21 @@ public class RemoteContact implements Contact{
 
     @Override
     public String getId() {
-        return null;
+        return this.uuid;
     }
 
     @Override
     public String getFirstName() {
-        return null;
+        return contactDetails.firstName;
     }
 
     @Override
     public String getLastName() {
-        return null;
+        return contactDetails.lastName;
     }
 
     @Override
     public String getEmailAddress() {
-        return null;
+        return contactDetails.email;
     }
 }
