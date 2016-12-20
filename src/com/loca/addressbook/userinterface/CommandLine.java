@@ -26,4 +26,11 @@ public class CommandLine {
         return new CommandLine(command, parameters);
     }
 
+    public String getCommand() {
+        return command;
+    }
+
+    public List<String> getParameters() {
+        return parameters;
+    }
 }
