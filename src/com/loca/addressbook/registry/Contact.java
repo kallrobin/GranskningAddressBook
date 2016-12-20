@@ -1,12 +1,12 @@
 package com.loca.addressbook.registry;
 
 /**
- * Created by katan on 2016-12-20.
+ * Created by Ola on 2016-12-20.
  */
 public interface Contact {
 
     String  getId();
-    void getFirstName();
-    void getLastName();
-    void getEmailAddress();
+    String getFirstName();
+    String getLastName();
+    String getEmailAddress();
 }
