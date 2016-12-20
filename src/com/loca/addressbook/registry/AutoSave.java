@@ -7,14 +7,19 @@ import java.io.IOException;
  */
 public class AutoSave implements Runnable {
 
+    private RegistryPersister registryPersister;
+
+    public AutoSave(RegistryPersister registryPersister) {
+        this.registryPersister = registryPersister;
+    }
+
     @Override
     public void run() {
-        Thread.currentThread().setName("AutoSaver");
+        Thread.currentThread().setName("AutoSave");
         while (true) {
             try {
                 Thread.sleep(5000);
-                RegistryPersister.save();
-
+                registryPersister.save();
             } catch (InterruptedException e) {
                 e.printStackTrace();
             } catch (IOException e) {
