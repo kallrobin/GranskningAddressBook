@@ -1,11 +1,12 @@
 package com.loca.addressbook.registry;
 
+import java.io.Serializable;
 import java.util.UUID;
 
 /**
  * Created by Ola on 2016-12-20.
  */
-public class LocalContact implements Contact {
+public class LocalContact implements Contact, Serializable {
 
     private UUID id;
     private ContactDetails contactDetails;
