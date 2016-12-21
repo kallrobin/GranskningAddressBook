@@ -48,16 +48,18 @@ public class CatalogueClient {
     }
 
     public String waitForResponse(){
+        String stringLine= "";
         try {
             for (String line = reader.readLine(); !line.equals(""); line = reader.readLine()) {
-                return line;
+                stringLine += line + "\n";
             }
             disconnect();
             reader.close();
+            return  stringLine;
+
         } catch (IOException e) {
             e.printStackTrace();
         }
-
         return null;
     }
 
