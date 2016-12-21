@@ -23,8 +23,6 @@ public class AutoSave implements Runnable {
                 registryPersister.save();
             } catch (InterruptedException e) {
                 e.printStackTrace();
-            } catch (IOException e) {
-                e.printStackTrace();
             }
         }
     }

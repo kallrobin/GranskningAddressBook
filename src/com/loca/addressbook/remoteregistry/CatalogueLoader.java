@@ -21,7 +21,7 @@ public class CatalogueLoader implements Runnable{
     @Override
     public void run() {
         //Add as many hosts as you want
-        hosts.add("localhost");
+        hosts.add("172.20.200.240");
 
         for (String host: hosts){
             new RemoteCatalogueFactory(defaultPort);
