@@ -1,9 +1,11 @@
 package com.loca.addressbook.registry;
 
+import java.io.Serializable;
+
 /**
  * Created by Ola on 2016-12-20.
  */
-public class ContactDetails {
+public class ContactDetails implements Serializable {
 
     private  String firstName;
     private  String lastName;
