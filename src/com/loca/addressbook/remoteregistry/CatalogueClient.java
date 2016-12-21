@@ -34,11 +34,11 @@ public class CatalogueClient {
             reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 
         }catch (ConnectException e) {
-            System.err.println("Kan inte ansluta till serverporten: '" + port + "' på adressen: '" + host + "'");
+            System.err.println("Can not connect to server port: '" + port + "' on address: '" + host + "'");
         } catch (UnknownHostException e) {
-            System.err.println("Kan inte kontakta servern med adressen: '" + host + "' Okänd host!");
+            System.err.println("Can not connect to server with address: '" + host + "' unknown host!");
         } catch (Exception e) {
-            System.err.println("Ett fel uppstod under anslutning till servern");
+            System.err.println("An error occurred during session to server");
         }
     }
 
