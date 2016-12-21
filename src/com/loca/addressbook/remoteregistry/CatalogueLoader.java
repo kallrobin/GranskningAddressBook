@@ -9,7 +9,7 @@ import java.util.List;
  */
 public class CatalogueLoader implements Runnable{
     int defaultPort = 61616;
-    private RemoteCatalogueFactory catalogueFactory;
+    private RemoteCatalogueFactory catalogueFactory = new RemoteCatalogueFactory(61616);
     private RemoteRegistry remoteRegistry;
     private RemoteCatalogueProxy remoteCatalogueProxy;
     private List<String> hosts = new ArrayList<>();
