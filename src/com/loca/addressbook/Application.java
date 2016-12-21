@@ -15,7 +15,7 @@ public class Application {
 	
 	private static final String HOSTNAME_1 = "localhost";
 	private static final String HOSTNAME_2 = "172.20.200.173";
-	private static final String HOSTNAME_3 = "172.20.200.240";
+	private static final String HOSTNAME_3 = "172.20.201.62";
     private Console console = new Console();
     private Registry registry = new Registry();
     private RegistryPersister registryPersister = new RegistryPersister(registry);
@@ -46,7 +46,7 @@ public class Application {
 		List<String> hostNames = new ArrayList<>();
 		hostNames.add(HOSTNAME_1);
 		hostNames.add(HOSTNAME_2);
-		// hostNames.add(HOSTNAME_3);
+		hostNames.add(HOSTNAME_3);
 		return hostNames;
 	}
 
