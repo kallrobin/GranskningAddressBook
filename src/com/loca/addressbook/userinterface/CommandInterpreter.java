@@ -1,6 +1,7 @@
 package com.loca.addressbook.userinterface;
 
 import com.loca.addressbook.registry.Registry;
+import com.loca.addressbook.remoteregistry.RemoteRegistry;
 import com.loca.addressbook.userinterface.commands.*;
 import com.loca.addressbook.exceptions.InvalidCommandException;
 
@@ -9,10 +10,12 @@ import java.util.List;
 public class CommandInterpreter {
 
     private Registry registry;
+    private RemoteRegistry remoteRegistry;
     private ConsolePrinter consolePrinter;
 
-    public CommandInterpreter(ConsolePrinter consolePrinter, Registry registry) {
+    public CommandInterpreter(ConsolePrinter consolePrinter, Registry registry, RemoteRegistry remoteRegistry) {
         this.registry = registry;
+        this.remoteRegistry = remoteRegistry;
         this.consolePrinter = consolePrinter;
     }
 
@@ -43,7 +46,7 @@ public class CommandInterpreter {
                 command = new AddContactCommand(consolePrinter, registry, parameters);
                 break;
             case LIST:
-                command = new ListCommand(consolePrinter, registry, parameters);
+                command = new ListCommand(consolePrinter, registry, remoteRegistry, parameters);
                 break;
             case DELETE:
                 command = new DeleteContactCommand(consolePrinter, registry, parameters);

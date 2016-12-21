@@ -1,6 +1,7 @@
 package com.loca.addressbook.userinterface;
 
 import com.loca.addressbook.registry.Registry;
+import com.loca.addressbook.remoteregistry.RemoteRegistry;
 import com.loca.addressbook.userinterface.commands.Command;
 import com.loca.addressbook.exceptions.InvalidCommandException;
 import com.loca.addressbook.exceptions.InvalidCommandParameterException;
@@ -11,8 +12,8 @@ public class CommandLineInterface implements InputHandler {
 	private Console console = new Console();
 	private CommandInterpreter commandInterpreter;
 
-	public CommandLineInterface(Registry registry) {
-	    commandInterpreter = new CommandInterpreter(console, registry);
+	public CommandLineInterface(Registry registry, RemoteRegistry remoteRegistry) {
+	    commandInterpreter = new CommandInterpreter(console, registry, remoteRegistry);
 	    console.print(WELCOME_MESSAGE);
 	    console.registerInputHandler(this);
 

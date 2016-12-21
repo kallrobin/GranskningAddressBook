@@ -22,7 +22,7 @@ public class Application {
         catalogueLoader.setDaemon(true);
         catalogueLoader.start();
 
-        new CommandLineInterface(registry);
+        new CommandLineInterface(registry, remoteRegistry);
 
         registryPersister.save();
     }
