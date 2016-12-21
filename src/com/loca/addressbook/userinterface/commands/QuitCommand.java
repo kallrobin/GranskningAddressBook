@@ -19,8 +19,8 @@ public class QuitCommand implements Command {
 
     @Override
     public void execute() throws InvalidCommandParameterException {
-        if (parameters.size() != commandType.getArgumentCount()) {
-            throw new InvalidCommandParameterException();
+        if (parameters.size() != commandType.getParametersCount()) {
+            throw new InvalidCommandParameterException(commandType, parameters);
         }
         consolePrinter.print(commandType.getSuccessMessage());
         throw new QuitApplicationException();

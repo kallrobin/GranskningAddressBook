@@ -11,13 +11,13 @@ public enum CommandType {
 	
 	private String commandName;
 	private String description;
-	private int argumentCount;
+	private int parametersCount;
 	private String successMessage;
 	private String failureMessage;
 	
-	private CommandType(String commandName, int argumentCount, String description, String successMessage, String failMessage) {
+	private CommandType(String commandName, int parametersCount, String description, String successMessage, String failMessage) {
 		this.commandName = commandName;
-		this.argumentCount = argumentCount;
+		this.parametersCount = parametersCount;
 		this.description = description;
 		this.successMessage = successMessage;
 		this.failureMessage = failMessage;
@@ -27,8 +27,8 @@ public enum CommandType {
 		return commandName;
 	}
 	
-	public int getArgumentCount() {
-		return argumentCount;
+	public int getParametersCount() {
+		return parametersCount;
 	}
 	
 	public String getDescription() {
