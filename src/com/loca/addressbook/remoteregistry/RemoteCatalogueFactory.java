@@ -13,7 +13,7 @@ public class RemoteCatalogueFactory {
     }
 
     public RemoteCatalogueProxy create(String host) {
-        new AtomicRemoteCatalogueProxy(host, defaultPort);
+        remoteCatalogueProxy = new AtomicRemoteCatalogueProxy(host, defaultPort);
         return remoteCatalogueProxy;
     }
 }
