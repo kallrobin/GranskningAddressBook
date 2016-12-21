@@ -1,5 +1,6 @@
 package com.loca.addressbook.remoteregistry;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -10,6 +11,7 @@ public class AtomicRemoteCatalogueProxy implements RemoteCatalogueProxy {
     CatalogueClient catalogueClient;
     String host;
     int port;
+    List<String> remoteContactList = new ArrayList<>();
 
     public AtomicRemoteCatalogueProxy(String host, int port) {
         catalogueClient = new CatalogueClient(host, port);
@@ -19,6 +21,14 @@ public class AtomicRemoteCatalogueProxy implements RemoteCatalogueProxy {
 
     @Override
     public List<String> getContacts() {
-        return null;
+        catalogueClient.connect();
+        catalogueClient.sendRequest("getall");
+
+        String result = catalogueClient.waitForResponse();
+        String[] contactArray = result.split("\n");
+        for (int i = 0; i >= contactArray.length; i++) {
+            remoteContactList.add(contactArray[i]);
+        }
+        return remoteContactList;
     }
 }
