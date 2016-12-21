@@ -13,7 +13,7 @@ import com.loca.addressbook.userinterface.Console;
 
 public class Application {
 	
-	private static final String HOSTNAME_1 = "localhost";
+	private static final String HOSTNAME_1 = "172.20.200.213";
 	private static final String HOSTNAME_2 = "172.20.200.173";
 	private static final String HOSTNAME_3 = "172.20.201.62";
     private Console console = new Console();

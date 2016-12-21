@@ -16,30 +16,19 @@ public class CatalogueClient {
 
     private String host;
     private int port;
-
     private Socket socket = null;
     private PrintWriter writer = null;
     private BufferedReader reader = null;
-
 
     public CatalogueClient(String host, int port) {
         this.host = host;
         this.port = port;
     }
 
-    public void connect(){
-
-        try{socket = new Socket(host, port);
-            writer = new PrintWriter(socket.getOutputStream());
-            reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-
-        }catch (ConnectException e) {
-            System.err.println("Kan inte ansluta till serverporten: '" + port + "' på adressen: '" + host + "'");
-        } catch (UnknownHostException e) {
-            System.err.println("Kan inte kontakta servern med adressen: '" + host + "' Okänd host!");
-        } catch (Exception e) {
-            System.err.println("Ett fel uppstod under anslutning till servern");
-        }
+    public void connect() throws IOException {
+        socket = new Socket(host, port);
+        writer = new PrintWriter(socket.getOutputStream());
+        reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
     }
 
     public  void sendRequest(String  request){
@@ -47,25 +36,17 @@ public class CatalogueClient {
         writer.flush();
     }
 
-    public String waitForResponse(){
+    public String waitForResponse() throws IOException {
         String stringLine= "";
-        try {
-            for (String line = reader.readLine(); !line.equals(""); line = reader.readLine()) {
-                stringLine += line + "\n";
-            }
-            disconnect();
-            reader.close();
-            return  stringLine;
-
-        } catch (IOException e) {
-            e.printStackTrace();
+        for (String line = reader.readLine(); !line.equals(""); line = reader.readLine()) {
+            stringLine += line + "\n";
         }
-        return null;
+        return  stringLine;
     }
 
-    public void disconnect(){
-        writer.println("exit");
-        writer.flush();
+    public void disconnect() throws IOException, NullPointerException {
+        reader.close();
         writer.close();
+        socket.close();
     }
 }
