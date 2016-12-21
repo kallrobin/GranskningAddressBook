@@ -34,11 +34,14 @@ public class RegistryPersister {
         }
     }
 
-    public void save() throws IOException {
-        try (FileOutputStream fileOut = new FileOutputStream("contacts.data")) {
-            try (ObjectOutputStream out = new ObjectOutputStream(fileOut)) {
+    public void save()  {
+        try {
+            FileOutputStream fileOut = new FileOutputStream("contacts.data");
+             ObjectOutputStream out = new ObjectOutputStream(fileOut);
                 out.writeObject(registry.getContacts());
+            }catch(IOException ioe) {
+
             }
         }
     }
-}
+
