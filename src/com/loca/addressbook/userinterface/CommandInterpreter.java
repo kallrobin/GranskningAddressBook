@@ -25,13 +25,13 @@ public class CommandInterpreter {
     private CommandType findCommandType(String command) throws InvalidCommandException {
 	    CommandType inputCommandType = null;
 	    for (CommandType commandType: CommandType.values()) {
-	        if (commandType.getDescription().equals(command)) {
+	        if (commandType.getCommandName().equals(command)) {
 	            inputCommandType = commandType;
 	            break;
             }
         }
         if (inputCommandType == null) {
-            throw new InvalidCommandException();
+            throw new InvalidCommandException(command);
         }
         return inputCommandType;
     }
@@ -55,7 +55,7 @@ public class CommandInterpreter {
                 command = new SearchCommand(consolePrinter, registry, parameters);
                 break;
             case QUIT:
-                //command = new QuitCommand(parameters);
+                command = new QuitCommand(consolePrinter, parameters);
                 break;
         }
 

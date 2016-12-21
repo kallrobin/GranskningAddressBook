@@ -22,7 +22,7 @@ public class CommandLineInterface implements InputHandler {
             Command command = commandInterpreter.interpret(commandLine);
             command.execute();
         } catch (InvalidCommandException | InvalidCommandParameterException e) {
-            e.printStackTrace();
+            console.print(e.getMessage());
         }
 
     }
