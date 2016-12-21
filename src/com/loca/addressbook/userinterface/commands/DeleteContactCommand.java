@@ -21,16 +21,6 @@ public class DeleteContactCommand implements Command {
     }
 
     @Override
-    public String getName() {
-        return commandType.getCommandName();
-    }
-
-    @Override
-    public String getDescription() {
-        return commandType.getDescription();
-    }
-
-    @Override
     public void execute() throws InvalidCommandParameterException {
         if (parameters.size() != commandType.getArgumentCount()) {
             throw new InvalidCommandParameterException();

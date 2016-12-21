@@ -11,9 +11,8 @@ public class CommandLineInterface implements InputHandler {
 	private CommandInterpreter commandInterpreter;
 
 	public CommandLineInterface(Registry registry) {
-	    commandInterpreter = new CommandInterpreter(registry);
+	    commandInterpreter = new CommandInterpreter(console, registry);
 	    console.registerInputHandler(this);
-	    console.readUserInput();
     }
 
     @Override

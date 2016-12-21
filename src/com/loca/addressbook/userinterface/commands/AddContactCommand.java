@@ -18,16 +18,6 @@ public class AddContactCommand implements Command {
 		this.registry = registry;
 		this.parameters = parameters;
 	}
-	
-    @Override
-    public String getName() {
-        return commandType.getCommandName();
-    }
-
-    @Override
-    public String getDescription() {
-        return commandType.getDescription();
-    }
 
     @Override
     public void execute() throws InvalidCommandParameterException {
