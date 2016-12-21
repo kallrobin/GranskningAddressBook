@@ -8,8 +8,8 @@ import java.util.List;
  * Created by Adrian on 2016-12-20.
  */
 public class CatalogueLoader implements Runnable{
-    int defaultPort = 61616;
-    private RemoteCatalogueFactory catalogueFactory = new RemoteCatalogueFactory(61616);
+    private static final int PORT = 61616;
+    private RemoteCatalogueFactory catalogueFactory = new RemoteCatalogueFactory(PORT);
     private RemoteRegistry remoteRegistry;
     private RemoteCatalogueProxy remoteCatalogueProxy;
     private List<String> hosts = new ArrayList<>();
@@ -24,7 +24,7 @@ public class CatalogueLoader implements Runnable{
         hosts.add("172.20.200.240");
 
         for (String host: hosts){
-            new RemoteCatalogueFactory(defaultPort);
+            new RemoteCatalogueFactory(PORT);
             remoteCatalogueProxy = catalogueFactory.create(host);
             for(String contact : remoteCatalogueProxy.getContacts()) {
                 String[] splittedList = contact.split(" ");
