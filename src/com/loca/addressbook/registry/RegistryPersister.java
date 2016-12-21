@@ -40,7 +40,7 @@ public class RegistryPersister {
              ObjectOutputStream out = new ObjectOutputStream(fileOut);
                 out.writeObject(registry.getContacts());
             }catch(IOException ioe) {
-
+                ioe.printStackTrace();
             }
         }
     }
