@@ -10,23 +10,24 @@ import java.util.List;
  */
 public class Registry {
 
-    List<Contact> localRegistry = new ArrayList<>();
+    private List<Contact> localContactList = new ArrayList<>();
+
 
     public void addContact(String firstName, String lastName, String email) {
 
-        localRegistry.add(new LocalContact(firstName, lastName, email, UniqueIdGenerator.generateUUID() ));
+        localContactList.add(new LocalContact(firstName, lastName, email, UniqueIdGenerator.generateUUID() ));
     }
 
     public List<Contact> getContacts() {
-        return this.localRegistry;
+        return this.localContactList;
     }
 
     public void deleteContact(String uuid) throws InvalidContactId {
 
         int i = 0;
-        for (Contact contact : localRegistry) {
+        for (Contact contact : localContactList) {
             if (contact.getId().equals(uuid)) {
-                localRegistry.remove(i);
+                localContactList.remove(i);
                 return;
             }
            i++;
@@ -36,7 +37,7 @@ public class Registry {
 
     public List<Contact> search(String search) {
         List<Contact> tempRegistry = new ArrayList <>();
-        for (Contact contact : localRegistry){
+        for (Contact contact : localContactList){
             if(contact.getFirstName().toLowerCase().startsWith(search) ||
                     contact.getLastName().toLowerCase().startsWith(search)){
                 tempRegistry.add(contact);
@@ -46,7 +47,7 @@ public class Registry {
 
     }
 
-    public void load() {
-
+    public void load(List<Contact> localRegistry) {
+        this.localContactList = localRegistry;
     }
 }
