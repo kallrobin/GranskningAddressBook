@@ -11,6 +11,7 @@ import java.util.List;
 public class RemoteRegistry {
 
     List<Contact> remoteRegistry = new ArrayList<>();
+    CatalogueLoader catalogueLoader = new CatalogueLoader(this);
 
     public List<Contact> getContacts() {
         return remoteRegistry;
