@@ -1,7 +1,5 @@
 package com.loca.addressbook.userinterface;
 
-import com.loca.addressbook.exceptions.QuitApplicationException;
-
 import java.util.Scanner;
 
 public class Console implements ConsolePrinter {

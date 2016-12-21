@@ -2,7 +2,6 @@ package com.loca.addressbook.userinterface.commands;
 
 import com.loca.addressbook.Application;
 import com.loca.addressbook.exceptions.InvalidCommandParameterException;
-import com.loca.addressbook.exceptions.QuitApplicationException;
 import com.loca.addressbook.userinterface.ConsolePrinter;
 
 import java.util.List;
