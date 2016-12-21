@@ -9,9 +9,11 @@ import java.util.List;
 public class CommandInterpreter {
 
     private Registry registry;
+    private ConsolePrinter consolePrinter;
 
-    public CommandInterpreter(Registry registry) {
+    public CommandInterpreter(ConsolePrinter consolePrinter, Registry registry) {
         this.registry = registry;
+        this.consolePrinter = consolePrinter;
     }
 
     public Command interpret(CommandLine commandLine) throws InvalidCommandException {
@@ -38,16 +40,16 @@ public class CommandInterpreter {
 	    Command command = null;
 	    switch (commandType) {
             case ADD:
-                //command = new AddContactCommand(registry, parameters);
+                command = new AddContactCommand(consolePrinter, registry, parameters);
                 break;
             case LIST:
                 //command = new ListCommand(registry, parameters);
                 break;
             case DELETE:
-                //command = new DeleteContactCommand(registry, parameters);
+                command = new DeleteContactCommand(consolePrinter, registry, parameters);
                 break;
             case HELP:
-                //command = new HelpCommand(parameters);
+                command = new HelpCommand(consolePrinter, parameters);
                 break;
             case SEARCH:
                 //command = new SearchCommand(registry, parameters);

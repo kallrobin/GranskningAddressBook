@@ -8,9 +8,10 @@ public class Console implements ConsolePrinter {
  
     public void registerInputHandler(InputHandler inputHandler) {
     	this.inputHandler = inputHandler;
+    	readUserInput();
     }
  
-    public void readUserInput() {
+    private void readUserInput() {
 		Scanner scanner = new Scanner(System.in);
 		while (scanner.hasNextLine()) {
 			String userInput = scanner.nextLine();
