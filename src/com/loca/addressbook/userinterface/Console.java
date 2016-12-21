@@ -5,8 +5,9 @@ import com.loca.addressbook.exceptions.QuitApplicationException;
 import java.util.Scanner;
 
 public class Console implements ConsolePrinter {
-	
+
 	private InputHandler inputHandler;
+	private boolean isQuit = false;
  
     public void registerInputHandler(InputHandler inputHandler) {
     	this.inputHandler = inputHandler;
@@ -14,15 +15,11 @@ public class Console implements ConsolePrinter {
     }
  
     private void readUserInput() {
-		Scanner scanner = new Scanner(System.in);
-		while (scanner.hasNextLine()) {
+        Scanner scanner = new Scanner(System.in);
+		while (!isQuit) {
 			String userInput = scanner.nextLine();
 			CommandLine commandLine = CommandLine.parse(userInput);
-			try {
-				inputHandler.handle(commandLine);
-			} catch (QuitApplicationException e) {
-				break;
-			}
+            inputHandler.handle(commandLine);
 		}
 		scanner.close();
 	}
@@ -30,6 +27,10 @@ public class Console implements ConsolePrinter {
     @Override
     public void print(String output) {
         System.out.println(output);
+    }
+
+    public void close() {
+        isQuit = true;
     }
 
 }

@@ -1,5 +1,6 @@
 package com.loca.addressbook.userinterface;
 
+import com.loca.addressbook.Application;
 import com.loca.addressbook.registry.Registry;
 import com.loca.addressbook.remoteregistry.RemoteRegistry;
 import com.loca.addressbook.userinterface.commands.*;
@@ -12,11 +13,13 @@ public class CommandInterpreter {
     private Registry registry;
     private RemoteRegistry remoteRegistry;
     private ConsolePrinter consolePrinter;
+    private Application application;
 
-    public CommandInterpreter(ConsolePrinter consolePrinter, Registry registry, RemoteRegistry remoteRegistry) {
+    public CommandInterpreter(ConsolePrinter consolePrinter, Registry registry, RemoteRegistry remoteRegistry, Application application) {
         this.registry = registry;
         this.remoteRegistry = remoteRegistry;
         this.consolePrinter = consolePrinter;
+        this.application = application;
     }
 
     public Command interpret(CommandLine commandLine) throws InvalidCommandException {
@@ -58,7 +61,7 @@ public class CommandInterpreter {
                 command = new SearchCommand(consolePrinter, registry, remoteRegistry, parameters);
                 break;
             case QUIT:
-                command = new QuitCommand(consolePrinter, parameters);
+                command = new QuitCommand(consolePrinter, parameters, application);
                 break;
         }
 
