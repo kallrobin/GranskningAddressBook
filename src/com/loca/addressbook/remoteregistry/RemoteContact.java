@@ -12,9 +12,9 @@ public class RemoteContact implements Contact {
     private ContactDetails contactDetails;
 
 
-    public RemoteContact(String firstName, String lastname, String email ) {
+    public RemoteContact(String uuid, String firstName, String lastname, String email ) {
         contactDetails = new ContactDetails(firstName,lastname,email);
-
+        this.uuid = uuid;
     }
 
     @Override
@@ -24,16 +24,16 @@ public class RemoteContact implements Contact {
 
     @Override
     public String getFirstName() {
-        return contactDetails.firstName;
+        return contactDetails.getFirstName();
     }
 
     @Override
     public String getLastName() {
-        return contactDetails.lastName;
+        return contactDetails.getLastName();
     }
 
     @Override
     public String getEmailAddress() {
-        return contactDetails.email;
+        return contactDetails.getEmail();
     }
 }
