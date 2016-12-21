@@ -43,7 +43,7 @@ public class CommandInterpreter {
                 command = new AddContactCommand(consolePrinter, registry, parameters);
                 break;
             case LIST:
-                //command = new ListCommand(registry, parameters);
+                command = new ListCommand(consolePrinter, registry, parameters);
                 break;
             case DELETE:
                 command = new DeleteContactCommand(consolePrinter, registry, parameters);
@@ -52,7 +52,7 @@ public class CommandInterpreter {
                 command = new HelpCommand(consolePrinter, parameters);
                 break;
             case SEARCH:
-                //command = new SearchCommand(registry, parameters);
+                command = new SearchCommand(consolePrinter, registry, parameters);
                 break;
             case QUIT:
                 //command = new QuitCommand(parameters);

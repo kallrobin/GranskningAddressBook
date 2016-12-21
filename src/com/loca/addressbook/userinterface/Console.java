@@ -1,5 +1,7 @@
 package com.loca.addressbook.userinterface;
 
+import com.loca.addressbook.exceptions.QuitApplicationException;
+
 import java.util.Scanner;
 
 public class Console implements ConsolePrinter {
@@ -16,8 +18,11 @@ public class Console implements ConsolePrinter {
 		while (scanner.hasNextLine()) {
 			String userInput = scanner.nextLine();
 			CommandLine commandLine = CommandLine.parse(userInput);
-			inputHandler.handle(commandLine);
-			// How do we handle quit?
+			try {
+				inputHandler.handle(commandLine);
+			} catch (QuitApplicationException e) {
+				break;
+			}
 		}
 		scanner.close();
 	}

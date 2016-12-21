@@ -9,9 +9,8 @@ import java.util.List;
 public class ContactListSorter {
 
     public static List<Contact> sort (List<Contact> contacts) {
-        List<Contact> contactListSorted = new ArrayList<>();
-        contactListSorted.addAll(contacts);
-        contactListSorted.sort(Comparator.comparing(contact -> contact.getFirstName().toLowerCase()));
-        return contactListSorted;
+        List<Contact> sortedContactList = new ArrayList<>(contacts);
+        sortedContactList.sort(Comparator.comparing(contact -> contact.getFirstName().toLowerCase()));
+        return sortedContactList;
     }
 }
