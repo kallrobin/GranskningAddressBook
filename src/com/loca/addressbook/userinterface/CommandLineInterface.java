@@ -13,6 +13,7 @@ public class CommandLineInterface implements InputHandler {
 	public CommandLineInterface(Registry registry) {
 	    commandInterpreter = new CommandInterpreter(console, registry);
 	    console.registerInputHandler(this);
+
     }
 
     @Override
