@@ -55,7 +55,7 @@ public class CommandInterpreter {
                 command = new HelpCommand(consolePrinter, parameters);
                 break;
             case SEARCH:
-                command = new SearchCommand(consolePrinter, registry, parameters);
+                command = new SearchCommand(consolePrinter, registry, remoteRegistry, parameters);
                 break;
             case QUIT:
                 command = new QuitCommand(consolePrinter, parameters);
