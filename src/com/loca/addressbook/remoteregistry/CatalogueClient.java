@@ -17,9 +17,9 @@ public class CatalogueClient {
     private String host;
     private int port;
 
-    Socket socket = null;
-    PrintWriter writer = null;
-    BufferedReader reader = null;
+    private Socket socket = null;
+    private PrintWriter writer = null;
+    private BufferedReader reader = null;
 
 
     public CatalogueClient(String host, int port) {

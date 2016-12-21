@@ -1,6 +1,7 @@
 package com.loca.addressbook.remoteregistry;
 
 import com.loca.addressbook.registry.Contact;
+import com.loca.addressbook.registry.UniqueIdGenerator;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,18 +11,26 @@ import java.util.List;
  */
 public class RemoteRegistry {
 
-    List<Contact> remoteRegistry = new ArrayList<>();
-    CatalogueLoader catalogueLoader = new CatalogueLoader(this);
+    List<RemoteContact> remoteRegistry = new ArrayList<>();
 
-    public List<Contact> getContacts() {
+
+    public List<RemoteContact> getContacts() {
         return remoteRegistry;
     }
 
-    public List<Contact> search(String search) {
-        return null;
+    public List<RemoteContact> search(String search) {
+        List<RemoteContact> tempRegistry = new ArrayList <>();
+        for (RemoteContact contact : remoteRegistry){
+            if(contact.getFirstName().toLowerCase().startsWith(search) ||
+                    contact.getLastName().toLowerCase().startsWith(search)){
+                tempRegistry.add(contact);
+            }
+        }
+        return tempRegistry;
     }
 
     public void add(String id, String firstName, String lastName, String email) {
 
+        remoteRegistry.add(new RemoteContact(id, firstName, lastName, email));
     }
 }

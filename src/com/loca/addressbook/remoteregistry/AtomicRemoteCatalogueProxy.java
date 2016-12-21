@@ -8,10 +8,10 @@ import java.util.List;
  */
 public class AtomicRemoteCatalogueProxy implements RemoteCatalogueProxy {
 
-    CatalogueClient catalogueClient;
-    String host;
-    int port;
-    List<String> remoteContactList = new ArrayList<>();
+    private CatalogueClient catalogueClient;
+    private String host;
+    private int port;
+    private List<String> remoteContactList = new ArrayList<>();
 
     public AtomicRemoteCatalogueProxy(String host, int port) {
         catalogueClient = new CatalogueClient(host, port);
