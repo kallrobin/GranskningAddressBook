@@ -38,8 +38,8 @@ public class Registry {
     public List<Contact> search(String search) {
         List<Contact> tempRegistry = new ArrayList <>();
         for (Contact contact : localContactList){
-            if(contact.getFirstName().toLowerCase().startsWith(search) ||
-                    contact.getLastName().toLowerCase().startsWith(search)){
+            if(contact.getFirstName().toLowerCase().startsWith(search.toLowerCase()) ||
+                    contact.getLastName().toLowerCase().startsWith(search.toLowerCase())){
                 tempRegistry.add(contact);
             }
         }

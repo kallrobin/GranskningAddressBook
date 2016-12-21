@@ -21,8 +21,8 @@ public class RemoteRegistry {
     public List<RemoteContact> search(String search) {
         List<RemoteContact> tempRegistry = new ArrayList <>();
         for (RemoteContact contact : remoteRegistry){
-            if(contact.getFirstName().toLowerCase().startsWith(search) ||
-                    contact.getLastName().toLowerCase().startsWith(search)){
+            if(contact.getFirstName().toLowerCase().startsWith(search.toLowerCase()) ||
+                    contact.getLastName().toLowerCase().startsWith(search.toLowerCase())){
                 tempRegistry.add(contact);
             }
         }
