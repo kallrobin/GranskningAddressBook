@@ -26,7 +26,7 @@ public class AtomicRemoteCatalogueProxy implements RemoteCatalogueProxy {
 
         String result = catalogueClient.waitForResponse();
         String[] contactArray = result.split("\n");
-        for (int i = 0; i >= contactArray.length; i++) {
+        for (int i = 0; i <= contactArray.length; i++) {
             remoteContactList.add(contactArray[i]);
         }
         return remoteContactList;
