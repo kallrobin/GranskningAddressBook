@@ -6,7 +6,7 @@ public class ContactFormatter {
 
     public static String format(Contact contact) {
 
-        return String.format("ID: %s%nFörnamn: %s%nEfternamn: %s%nE-postadress: %s%n",
+        return String.format("ID: %s%nFirstname: %s%nLastname: %s%nE-mail: %s%n%n",
                 contact.getId(), contact.getFirstName(), contact.getLastName(), contact.getEmailAddress());
     }
 }
