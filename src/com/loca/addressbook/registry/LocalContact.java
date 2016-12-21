@@ -12,6 +12,7 @@ public class LocalContact implements Contact, Serializable {
     private ContactDetails contactDetails;
 
     public LocalContact(String firstName, String lastname, String email, UUID id ) {
+        this.id = id;
         contactDetails = new ContactDetails(firstName,lastname,email);
     }
 
