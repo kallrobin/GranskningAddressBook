@@ -30,7 +30,7 @@ public class DeleteContactCommand implements Command {
 
     private void deleteContactFromRegistry() {
         String uuid = parameters.get(0);
-        String message = "";
+        String message;
         try {
         	registry.deleteContact(uuid);
         	message = commandType.getSuccessMessage();

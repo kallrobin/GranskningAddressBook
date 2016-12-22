@@ -35,7 +35,7 @@ public class SearchCommand implements Command {
     }
     
     private void searchContacts() {
-    	String output = "";
+    	String output;
     	String searchWord = parameters.get(0);
 		List<Contact> contacts = new ArrayList<>();
 		contacts.addAll(registry.search(searchWord));

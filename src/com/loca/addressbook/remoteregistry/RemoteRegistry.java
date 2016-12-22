@@ -3,9 +3,6 @@ package com.loca.addressbook.remoteregistry;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by Adrian on 2016-12-20.
- */
 public class RemoteRegistry {
 
     private List<RemoteContact> remoteRegistry = new ArrayList<>();

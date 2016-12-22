@@ -35,7 +35,7 @@ public class ListCommand implements Command {
     }
 
 	private void listContacts() {
-		String output = "";
+		String output;
 		List<Contact> contacts = new ArrayList<>();
 		contacts.addAll(registry.getContacts());
 		contacts.addAll(remoteRegistry.getContacts());
