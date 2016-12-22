@@ -10,7 +10,7 @@ public class RegistryPersister {
         this.registry = register;
     }
 
-    public  void load() {
+    public void load() {
 
         File f = new File("contacts.data");
         //Check if file exists
@@ -31,14 +31,14 @@ public class RegistryPersister {
         }
     }
 
-    public void save()  {
+    public void save() {
         try {
             FileOutputStream fileOut = new FileOutputStream("contacts.data");
-             ObjectOutputStream out = new ObjectOutputStream(fileOut);
-                out.writeObject(registry.getContacts());
-            }catch(IOException ioe) {
-                ioe.printStackTrace();
-            }
+            ObjectOutputStream out = new ObjectOutputStream(fileOut);
+            out.writeObject(registry.getContacts());
+        } catch (IOException ioe) {
+            ioe.printStackTrace();
         }
     }
+}
 
