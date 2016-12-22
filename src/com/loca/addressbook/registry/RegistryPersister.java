@@ -3,9 +3,6 @@ package com.loca.addressbook.registry;
 import java.io.*;
 import java.util.List;
 
-/**
- * Created by Loca on 2016-12-20.
- */
 public class RegistryPersister {
 
     private Registry registry;

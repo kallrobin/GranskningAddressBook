@@ -1,8 +1,5 @@
 package com.loca.addressbook.remoteregistry;
 
-import com.loca.addressbook.registry.Contact;
-import com.loca.addressbook.registry.UniqueIdGenerator;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,8 +8,7 @@ import java.util.List;
  */
 public class RemoteRegistry {
 
-    List<RemoteContact> remoteRegistry = new ArrayList<>();
-
+    private List<RemoteContact> remoteRegistry = new ArrayList<>();
 
     public List<RemoteContact> getContacts() {
         return remoteRegistry;
