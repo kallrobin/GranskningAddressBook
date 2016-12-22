@@ -8,8 +8,7 @@ import java.util.List;
  */
 public class RemoteRegistry {
 
-    List<RemoteContact> remoteRegistry = new ArrayList<>();
-
+    private List<RemoteContact> remoteRegistry = new ArrayList<>();
 
     public List<RemoteContact> getContacts() {
         return remoteRegistry;
