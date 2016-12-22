@@ -7,6 +7,7 @@ import java.util.List;
  * Created by Loca on 2016-12-20.
  */
 public class RegistryPersister {
+
     private Registry registry;
 
     public RegistryPersister(Registry register) {
@@ -16,7 +17,7 @@ public class RegistryPersister {
     public  void load() {
 
         File f = new File("contacts.data");
-        //Check if file exists
+
         if (f.isFile() && f.canRead()) {
             try {
                 FileInputStream fileIn = new FileInputStream("contacts.data");
