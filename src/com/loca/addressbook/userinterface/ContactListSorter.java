@@ -10,7 +10,8 @@ public class ContactListSorter {
 
     public static List<Contact> sort (List<Contact> contacts) {
         List<Contact> sortedContactList = new ArrayList<>(contacts);
-        sortedContactList.sort(Comparator.comparing(contact -> contact.getFirstName().toLowerCase()));
+        Comparator<Contact> comparator = Comparator.comparing(contact -> contact.getFirstName().toLowerCase());
+        sortedContactList.sort(comparator);
         return sortedContactList;
     }
 }
