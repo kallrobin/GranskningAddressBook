@@ -24,7 +24,7 @@ public class Application {
     public void start() {
     	initiateLocalContacts();
 		initiateServerContacts();
-		startAutosaveDaemon();
+		startAutoSaveDaemon();
 		initiateCommandLineInterface();
     }
 
@@ -50,7 +50,7 @@ public class Application {
 		return hostNames;
 	}
 
-	private void startAutosaveDaemon() {
+	private void startAutoSaveDaemon() {
 		Runnable runnable  = new AutoSave(registryPersister);
     	Thread autoSave = new Thread(runnable);
         autoSave.setDaemon(true);
