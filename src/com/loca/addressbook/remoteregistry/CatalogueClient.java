@@ -9,9 +9,6 @@ import java.net.Socket;
 import java.net.UnknownHostException;
 import java.util.logging.Level;
 
-/**
- * Created by Loca on 2016-12-20.
- */
 public class CatalogueClient {
 
     private String host;
