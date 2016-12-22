@@ -4,9 +4,6 @@ import com.loca.addressbook.registry.Contact;
 import com.loca.addressbook.registry.ContactDetails;
 import com.sun.org.apache.xml.internal.resolver.Catalog;
 
-/**
- * Created by katan on 2016-12-20.
- */
 public class RemoteContact implements Contact {
     private String uuid;
     private ContactDetails contactDetails;

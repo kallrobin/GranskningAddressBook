@@ -15,7 +15,7 @@ public enum CommandType {
 	private String successMessage;
 	private String failureMessage;
 	
-	private CommandType(String commandName, int parametersCount, String description, String successMessage, String failMessage) {
+	CommandType(String commandName, int parametersCount, String description, String successMessage, String failMessage) {
 		this.commandName = commandName;
 		this.parametersCount = parametersCount;
 		this.description = description;

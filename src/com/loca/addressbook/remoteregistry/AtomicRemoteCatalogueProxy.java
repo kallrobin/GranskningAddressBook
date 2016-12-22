@@ -3,22 +3,18 @@ package com.loca.addressbook.remoteregistry;
 import java.io.IOException;
 import java.io.SyncFailedException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
-/**
- * Created by Loca on 2016-12-20.
- */
 public class AtomicRemoteCatalogueProxy implements RemoteCatalogueProxy {
 
     private CatalogueClient catalogueClient;
     private String host;
-    private int port;
     private List<String> remoteContactList = new ArrayList<>();
 
     public AtomicRemoteCatalogueProxy(String host, int port) {
         catalogueClient = new CatalogueClient(host, port);
         this.host = host;
-        this.port = port;
     }
 
     @Override
@@ -31,9 +27,7 @@ public class AtomicRemoteCatalogueProxy implements RemoteCatalogueProxy {
 
             String[] contactArray = result.split("\n");
 
-            for (int i = 0; i < contactArray.length; i++) {
-                remoteContactList.add(contactArray[i]);
-            }
+            Collections.addAll(remoteContactList, contactArray);
 
             catalogueClient.sendRequest("exit");
 
