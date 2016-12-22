@@ -9,8 +9,8 @@ public class RemoteContact implements Contact {
     private ContactDetails contactDetails;
 
 
-    public RemoteContact(String uuid, String firstName, String lastname, String email ) {
-        contactDetails = new ContactDetails(firstName,lastname,email);
+    public RemoteContact(String uuid, String firstName, String lastName, String email ) {
+        contactDetails = new ContactDetails(firstName,lastName,email);
         this.uuid = uuid;
     }
 
