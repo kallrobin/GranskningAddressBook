@@ -1,8 +1,5 @@
 package com.loca.addressbook.remoteregistry;
 
-import com.loca.addressbook.registry.Contact;
-import com.loca.addressbook.registry.UniqueIdGenerator;
-
 import java.util.ArrayList;
 import java.util.List;
 
