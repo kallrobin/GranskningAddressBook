@@ -17,7 +17,7 @@ public class AutoSave implements Runnable {
                 Thread.sleep(5000);
                 registryPersister.save();
             } catch (InterruptedException e) {
-                e.printStackTrace();
+                System.err.println("Autosave interrupted");
             }
         }
     }
