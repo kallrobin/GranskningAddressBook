@@ -28,9 +28,7 @@ public class SearchCommand implements Command {
 
     @Override
     public void execute() throws InvalidCommandParameterException {
-    	if (parameters.size() != commandType.getParametersCount()) {
-            throw new InvalidCommandParameterException(commandType, parameters);
-        }
+    	validate();
     	searchContacts();
     }
     
@@ -58,5 +56,10 @@ public class SearchCommand implements Command {
 		}
 		return output.toString();
 	}
-    
+
+	private void validate() throws InvalidCommandParameterException {
+		if (parameters.size() != commandType.getParametersCount()) {
+			throw new InvalidCommandParameterException(commandType, parameters);
+		}
+	}
 }
