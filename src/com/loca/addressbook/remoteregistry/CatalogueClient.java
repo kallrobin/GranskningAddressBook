@@ -31,7 +31,7 @@ public class CatalogueClient {
         reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
     }
 
-    public  void sendRequest(String  request){
+    public  void sendRequest(String request){
         writer.println(request);
         writer.flush();
     }
