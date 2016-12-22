@@ -2,7 +2,7 @@ package com.loca.addressbook.remoteregistry;
 
 import com.loca.addressbook.registry.Contact;
 import com.loca.addressbook.registry.ContactDetails;
-import com.sun.org.apache.xml.internal.resolver.Catalog;
+
 
 public class RemoteContact implements Contact {
     private String uuid;

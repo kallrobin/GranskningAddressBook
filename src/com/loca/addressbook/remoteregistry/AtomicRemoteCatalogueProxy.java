@@ -1,7 +1,6 @@
 package com.loca.addressbook.remoteregistry;
 
 import java.io.IOException;
-import java.io.SyncFailedException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
