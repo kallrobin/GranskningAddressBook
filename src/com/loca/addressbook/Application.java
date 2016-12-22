@@ -58,7 +58,8 @@ public class Application {
 	}
 	
 	private void initiateCommandLineInterface() {
-		new CommandLineInterface(registry, remoteRegistry, console, this);
+		CommandLineInterface commandLineInterface = new CommandLineInterface(registry, remoteRegistry, console, this);
+		commandLineInterface.start();
 	}
 	 
 	public void quit() {
