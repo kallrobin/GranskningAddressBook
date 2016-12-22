@@ -13,7 +13,7 @@ public class Registry {
 
     public void addContact(String firstName, String lastName, String email) {
 
-        localContactList.add(new LocalContact(firstName, lastName, email, UUID.randomUUID() ));
+        localContactList.add(new LocalContact(firstName, lastName, email, UUID.randomUUID()));
     }
 
     public List<Contact> getContacts() {
@@ -28,16 +28,16 @@ public class Registry {
                 localContactList.remove(i);
                 return;
             }
-           i++;
+            i++;
         }
         throw new InvalidContactId();
     }
 
     public List<Contact> search(String search) {
-        List<Contact> tempRegistry = new ArrayList <>();
-        for (Contact contact : localContactList){
-            if(contact.getFirstName().toLowerCase().startsWith(search.toLowerCase()) ||
-                    contact.getLastName().toLowerCase().startsWith(search.toLowerCase())){
+        List<Contact> tempRegistry = new ArrayList<>();
+        for (Contact contact : localContactList) {
+            if (contact.getFirstName().toLowerCase().startsWith(search.toLowerCase()) ||
+                    contact.getLastName().toLowerCase().startsWith(search.toLowerCase())) {
                 tempRegistry.add(contact);
             }
         }
