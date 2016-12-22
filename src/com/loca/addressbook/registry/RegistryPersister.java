@@ -33,8 +33,8 @@ public class RegistryPersister {
             FileOutputStream fileOut = new FileOutputStream("contacts.data");
             ObjectOutputStream out = new ObjectOutputStream(fileOut);
             out.writeObject(registry.getContacts());
-        } catch (IOException ioe) {
-            ioe.printStackTrace();
+        } catch (IOException e) {
+            System.err.printf("Unable to save local contacts");
         }
     }
 }
