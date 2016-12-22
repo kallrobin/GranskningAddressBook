@@ -28,14 +28,12 @@ public class SearchCommand implements Command {
 
     @Override
     public void execute() throws InvalidCommandParameterException {
-    	if (parameters.size() != commandType.getParametersCount()) {
-            throw new InvalidCommandParameterException(commandType, parameters);
-        }
+    	validate();
     	searchContacts();
     }
     
     private void searchContacts() {
-    	String output = "";
+    	String output;
     	String searchWord = parameters.get(0);
 		List<Contact> contacts = new ArrayList<>();
 		contacts.addAll(registry.search(searchWord));
@@ -58,5 +56,10 @@ public class SearchCommand implements Command {
 		}
 		return output.toString();
 	}
-    
+
+	private void validate() throws InvalidCommandParameterException {
+		if (parameters.size() != commandType.getParametersCount()) {
+			throw new InvalidCommandParameterException(commandType, parameters);
+		}
+	}
 }

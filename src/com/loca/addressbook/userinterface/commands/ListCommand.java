@@ -28,14 +28,12 @@ public class ListCommand implements Command {
 
     @Override
     public void execute() throws InvalidCommandParameterException {
-    	if (parameters.size() != commandType.getParametersCount()) {
-            throw new InvalidCommandParameterException(commandType, parameters);
-        }
+    	validate();
     	listContacts();
     }
 
 	private void listContacts() {
-		String output = "";
+		String output;
 		List<Contact> contacts = new ArrayList<>();
 		contacts.addAll(registry.getContacts());
 		contacts.addAll(remoteRegistry.getContacts());
@@ -55,6 +53,12 @@ public class ListCommand implements Command {
 			output.append(formattedContact);
 		}
 		return output.toString();
+	}
+
+	private void validate() throws InvalidCommandParameterException {
+		if (parameters.size() != commandType.getParametersCount()) {
+			throw new InvalidCommandParameterException(commandType, parameters);
+		}
 	}
    
 }

@@ -6,5 +6,4 @@ public class AddressBookDemo {
         Application application = new Application();
         application.start();
     }
-
 }

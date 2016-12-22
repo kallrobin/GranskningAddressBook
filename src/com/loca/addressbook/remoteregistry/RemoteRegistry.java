@@ -1,18 +1,11 @@
 package com.loca.addressbook.remoteregistry;
 
-import com.loca.addressbook.registry.Contact;
-import com.loca.addressbook.registry.UniqueIdGenerator;
-
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by Adrian on 2016-12-20.
- */
 public class RemoteRegistry {
 
-    List<RemoteContact> remoteRegistry = new ArrayList<>();
-
+    private List<RemoteContact> remoteRegistry = new ArrayList<>();
 
     public List<RemoteContact> getContacts() {
         return remoteRegistry;

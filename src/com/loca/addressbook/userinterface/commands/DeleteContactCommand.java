@@ -22,15 +22,13 @@ public class DeleteContactCommand implements Command {
 
     @Override
     public void execute() throws InvalidCommandParameterException {
-        if (parameters.size() != commandType.getParametersCount()) {
-            throw new InvalidCommandParameterException(commandType, parameters);
-        }
+        validate();
         deleteContactFromRegistry();
     }
 
     private void deleteContactFromRegistry() {
         String uuid = parameters.get(0);
-        String message = "";
+        String message;
         try {
         	registry.deleteContact(uuid);
         	message = commandType.getSuccessMessage();
@@ -38,5 +36,11 @@ public class DeleteContactCommand implements Command {
         	message = commandType.getFailureMessage();
         }
         consolePrinter.print(message);
+    }
+
+    private void validate() throws InvalidCommandParameterException {
+        if (parameters.size() != commandType.getParametersCount()) {
+            throw new InvalidCommandParameterException(commandType, parameters);
+        }
     }
 }

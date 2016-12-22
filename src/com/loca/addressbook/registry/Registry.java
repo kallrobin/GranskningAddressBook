@@ -4,10 +4,8 @@ import com.loca.addressbook.exceptions.InvalidContactId;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
-/**
- * Created by Adrian on 2016-12-20.
- */
 public class Registry {
 
     private List<Contact> localContactList = new ArrayList<>();
@@ -15,7 +13,7 @@ public class Registry {
 
     public void addContact(String firstName, String lastName, String email) {
 
-        localContactList.add(new LocalContact(firstName, lastName, email, UniqueIdGenerator.generateUUID() ));
+        localContactList.add(new LocalContact(firstName, lastName, email, UUID.randomUUID() ));
     }
 
     public List<Contact> getContacts() {

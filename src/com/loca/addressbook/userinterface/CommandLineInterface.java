@@ -11,12 +11,10 @@ public class CommandLineInterface implements InputHandler {
 
     private static final String WELCOME_MESSAGE = "Welcome to AddressBook 2.0!";
 	private Console console;
-	private Application application;
 	private CommandInterpreter commandInterpreter;
 
 	public CommandLineInterface(Registry registry, RemoteRegistry remoteRegistry, Console console, Application application) {
 	    this.console = console;
-	    this.application = application;
 	    commandInterpreter = new CommandInterpreter(console, registry, remoteRegistry, application);
 	    console.print(WELCOME_MESSAGE);
 	    console.registerInputHandler(this);

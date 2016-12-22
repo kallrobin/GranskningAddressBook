@@ -3,20 +3,18 @@ package com.loca.addressbook.registry;
 import java.io.*;
 import java.util.List;
 
-/**
- * Created by Loca on 2016-12-20.
- */
 public class RegistryPersister {
+
     private Registry registry;
 
     public RegistryPersister(Registry register) {
         this.registry = register;
     }
 
-    public  void load() {
+    public void load() {
 
         File f = new File("contacts.data");
-        //Check if file exists
+
         if (f.isFile() && f.canRead()) {
             try {
                 FileInputStream fileIn = new FileInputStream("contacts.data");
@@ -24,24 +22,20 @@ public class RegistryPersister {
                 registry.load((List<Contact>) in.readObject());
                 in.close();
                 fileIn.close();
-            } catch (FileNotFoundException e) {
-                e.printStackTrace();
-            } catch (IOException e) {
-                e.printStackTrace();
-            } catch (ClassNotFoundException e) {
-                e.printStackTrace();
+            } catch (IOException | ClassNotFoundException e) {
+                System.err.println("Local addressbook could not load");
             }
         }
     }
 
-    public void save()  {
+    public synchronized void save() {
         try {
             FileOutputStream fileOut = new FileOutputStream("contacts.data");
-             ObjectOutputStream out = new ObjectOutputStream(fileOut);
-                out.writeObject(registry.getContacts());
-            }catch(IOException ioe) {
-                ioe.printStackTrace();
-            }
+            ObjectOutputStream out = new ObjectOutputStream(fileOut);
+            out.writeObject(registry.getContacts());
+        } catch (IOException e) {
+            System.err.printf("Unable to save local contacts");
         }
     }
+}
 
