@@ -23,7 +23,7 @@ public class RegistryPersister {
                 in.close();
                 fileIn.close();
             } catch (IOException | ClassNotFoundException e) {
-                System.err.println("Local addressbook could not load");
+                System.err.println("Local address book could not load");
             }
         }
     }

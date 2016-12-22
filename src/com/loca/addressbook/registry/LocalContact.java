@@ -8,9 +8,9 @@ public class LocalContact implements Contact, Serializable {
     private UUID id;
     private ContactDetails contactDetails;
 
-    public LocalContact(String firstName, String lastname, String email, UUID id ) {
+    public LocalContact(String firstName, String lastName, String email, UUID id ) {
         this.id = id;
-        contactDetails = new ContactDetails(firstName,lastname,email);
+        contactDetails = new ContactDetails(firstName,lastName,email);
     }
 
     @Override
