@@ -22,17 +22,13 @@ public class RegistryPersister {
                 registry.load((List<Contact>) in.readObject());
                 in.close();
                 fileIn.close();
-            } catch (FileNotFoundException e) {
-                e.printStackTrace();
-            } catch (IOException e) {
-                e.printStackTrace();
-            } catch (ClassNotFoundException e) {
-                e.printStackTrace();
+            } catch (IOException | ClassNotFoundException e) {
+                System.err.println("Local addressbook could not load");
             }
         }
     }
 
-    public void save() {
+    public synchronized void save() {
         try {
             FileOutputStream fileOut = new FileOutputStream("contacts.data");
             ObjectOutputStream out = new ObjectOutputStream(fileOut);
