@@ -4,6 +4,7 @@ import java.io.*;
 import java.util.List;
 
 public class RegistryPersister {
+
     private Registry registry;
 
     public RegistryPersister(Registry register) {
@@ -13,7 +14,7 @@ public class RegistryPersister {
     public  void load() {
 
         File f = new File("contacts.data");
-        //Check if file exists
+
         if (f.isFile() && f.canRead()) {
             try {
                 FileInputStream fileIn = new FileInputStream("contacts.data");
