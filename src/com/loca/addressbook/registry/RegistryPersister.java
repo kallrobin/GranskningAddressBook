@@ -13,9 +13,9 @@ public class RegistryPersister {
 
     public void load() {
 
-        File f = new File("contacts.data");
+        File file = new File("contacts.data");
 
-        if (f.isFile() && f.canRead()) {
+        if (file.isFile() && file.canRead()) {
             try {
                 FileInputStream fileIn = new FileInputStream("contacts.data");
                 ObjectInputStream in = new ObjectInputStream(fileIn);
