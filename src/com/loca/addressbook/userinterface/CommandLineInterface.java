@@ -15,7 +15,7 @@ public class CommandLineInterface implements InputHandler {
 
 	public CommandLineInterface(Registry registry, RemoteRegistry remoteRegistry, Console console, Application application) {
 	    this.console = console;
-	    commandInterpreter = new CommandInterpreter(console, registry, remoteRegistry, application);
+	    this.commandInterpreter = new CommandInterpreter(console, registry, remoteRegistry, application);
 	    console.registerInputHandler(this);
 
     }
