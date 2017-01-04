@@ -1,11 +1,16 @@
 package com.loca.addressbook.remoteregistry;
 
+import com.loca.addressbook.registry.RegistryPersister;
+
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class AtomicRemoteCatalogueProxy implements RemoteCatalogueProxy {
+    private static final Logger log = Logger.getLogger(AtomicRemoteCatalogueProxy.class.getName());
 
     private CatalogueClient catalogueClient;
     private String host;
@@ -31,14 +36,14 @@ public class AtomicRemoteCatalogueProxy implements RemoteCatalogueProxy {
             catalogueClient.sendRequest("exit");
 
         } catch (IOException e) {
-            System.err.println("Connection error (" + this.host + ")");
+            log.log(Level.SEVERE, Thread.currentThread().getName() + ": IOException caught in thread", e);
         } finally {
-            try {
+            try {System.err.println("Connection error (" + this.host + ")");
                 catalogueClient.disconnect();
             } catch (IOException e) {
-                System.err.println("Disconnection error (" + this.host + ")");
+                log.log(Level.SEVERE, Thread.currentThread().getName() + ": IOException caught in thread", e);
             } catch (NullPointerException e) {
-                System.err.println("Connection never opened (" + this.host + ")");
+                log.log(Level.SEVERE, Thread.currentThread().getName() + ": NullPointerException caught in thread", e);
             }
         }
         return remoteContactList;

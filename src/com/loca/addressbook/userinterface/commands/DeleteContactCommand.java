@@ -1,11 +1,13 @@
 package com.loca.addressbook.userinterface.commands;
 
 import com.loca.addressbook.registry.Registry;
+import com.loca.addressbook.remoteregistry.AtomicRemoteCatalogueProxy;
 import com.loca.addressbook.userinterface.ConsolePrinter;
 import com.loca.addressbook.exceptions.InvalidCommandParameterException;
 import com.loca.addressbook.exceptions.InvalidContactId;
 
 import java.util.List;
+import java.util.logging.Logger;
 
 public class DeleteContactCommand implements Command {
 
