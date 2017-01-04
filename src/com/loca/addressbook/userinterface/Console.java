@@ -1,27 +1,15 @@
 package com.loca.addressbook.userinterface;
 
-import java.util.Scanner;
+/**
+ * @author Christopher Olsson on 2017-01-04.
+ */
+public interface Console {
 
-public class Console implements ConsolePrinter {
+    void registerInputHandler(InputHandler inputHandler);
 
-	private InputHandler inputHandler;
- 
-    public void registerInputHandler(InputHandler inputHandler) {
-    	this.inputHandler = inputHandler;
-    }
- 
-    public void readUserInput() {
-        Scanner scanner = new Scanner(System.in);
-		while (true) {
-			String userInput = scanner.nextLine();
-			CommandLine commandLine = CommandLine.parse(userInput);
-            inputHandler.handle(commandLine);
-		}
-	}
+    void print(String output);
 
-    @Override
-    public void print(String output) {
-        System.out.println(output);
-    }
+    void readUserInput();
 
+    void notifyInputHandler(CommandLine commandLine);
 }

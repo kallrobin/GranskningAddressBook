@@ -10,19 +10,19 @@ import com.loca.addressbook.exceptions.InvalidCommandParameterException;
 public class CommandLineInterface implements InputHandler {
 
     private static final String WELCOME_MESSAGE = "Welcome to AddressBook 2.0!";
-	private Console console;
+	private Console systemConsole;
 	private CommandInterpreter commandInterpreter;
 
-	public CommandLineInterface(Registry registry, RemoteRegistry remoteRegistry, Console console, Application application) {
-	    this.console = console;
-	    this.commandInterpreter = new CommandInterpreter(console, registry, remoteRegistry, application);
-	    console.registerInputHandler(this);
+	public CommandLineInterface(Registry registry, RemoteRegistry remoteRegistry, Console systemConsole, Application application) {
+	    systemConsole.registerInputHandler(this);
+	    this.commandInterpreter = new CommandInterpreter((ConsolePrinter)systemConsole, registry, remoteRegistry, application);
+	    this.systemConsole = systemConsole;
 
     }
 
     public void start() {
-        console.print(WELCOME_MESSAGE);
-	    console.readUserInput();
+        systemConsole.print(WELCOME_MESSAGE);
+        systemConsole.readUserInput();
     }
 
     @Override
@@ -31,7 +31,7 @@ public class CommandLineInterface implements InputHandler {
             Command command = commandInterpreter.interpret(commandLine);
             command.execute();
         } catch (InvalidCommandException | InvalidCommandParameterException e) {
-            console.print(e.getMessage());
+            systemConsole.print(e.getMessage());
         }
 
     }

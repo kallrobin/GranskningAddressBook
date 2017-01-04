@@ -1,7 +1,5 @@
 package com.loca.addressbook.registry;
 
-import com.loca.addressbook.userinterface.Console;
-
 import java.io.*;
 import java.util.List;
 

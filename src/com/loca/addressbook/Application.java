@@ -10,6 +10,7 @@ import com.loca.addressbook.remoteregistry.CatalogueLoader;
 import com.loca.addressbook.remoteregistry.RemoteRegistry;
 import com.loca.addressbook.userinterface.CommandLineInterface;
 import com.loca.addressbook.userinterface.Console;
+import com.loca.addressbook.userinterface.SystemConsole;
 
 public class Application {
 
@@ -21,18 +22,19 @@ public class Application {
 	private static final String HOSTNAME_1 = "172.20.200.247";
 	private static final String HOSTNAME_2 = "172.20.200.173";
 	private static final String HOSTNAME_3 = "172.20.201.62";
-    private Console console = new Console();
+    private SystemConsole systemConsole = new SystemConsole();
     private Registry registry = new Registry();
     private RegistryPersister registryPersister = new RegistryPersister(registry);
     private AutoSave autoSave = new AutoSave(registryPersister);
     private RemoteRegistry remoteRegistry = new RemoteRegistry();
-    private CatalogueLoader catalogueLoader = new CatalogueLoader(remoteRegistry, makeHostNames() );
+    private CatalogueLoader catalogueLoader = new CatalogueLoader(remoteRegistry, makeHostNames());
+	private CommandLineInterface commandLineInterface = new CommandLineInterface(registry, remoteRegistry, systemConsole, this);
 
     public void start() {
     	initiateLocalContacts();
 		catalogueLoader.start();
 		autoSave.start();
-		initiateCommandLineInterface();
+		commandLineInterface.start();
     }
 
 	private void initiateLocalContacts() {
@@ -46,11 +48,6 @@ public class Application {
 		hostNames.add(HOSTNAME_2);
 		hostNames.add(HOSTNAME_3);
 		return hostNames;
-	}
-	
-	private void initiateCommandLineInterface() {
-		CommandLineInterface commandLineInterface = new CommandLineInterface(registry, remoteRegistry, console, this);
-		commandLineInterface.start();
 	}
 	 
 	public void quit() {
