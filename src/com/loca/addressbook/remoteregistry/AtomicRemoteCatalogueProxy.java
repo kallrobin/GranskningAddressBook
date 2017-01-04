@@ -11,12 +11,10 @@ public class AtomicRemoteCatalogueProxy implements RemoteCatalogueProxy {
     private static final Logger log = Logger.getLogger(AtomicRemoteCatalogueProxy.class.getName());
 
     private CatalogueClient catalogueClient;
-    private String host;
     private List<String> remoteContactList = new ArrayList<>();
 
     public AtomicRemoteCatalogueProxy(String host, int port) {
         catalogueClient = new CatalogueClient(host, port);
-        this.host = host;
     }
 
     @Override
