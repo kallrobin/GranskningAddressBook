@@ -31,7 +31,7 @@ public class HelpCommand implements Command {
                 "Delete" + TAB + "Deletes a contact with the given UUID" + NEW_LINE +
                 "Search" + TAB + "Search for contacts by \"Starts With\"" + NEW_LINE +
                 "List" + TAB + "Lists all the contacts" + NEW_LINE +
-                "Help" + TAB + "Lists the help meny" + NEW_LINE +
+                "Help" + TAB + "Lists the help menu" + NEW_LINE +
                 "Quit" + TAB + "Quits the application.";
         return helpText;
     }
