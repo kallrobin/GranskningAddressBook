@@ -22,7 +22,7 @@ public class DeleteContactCommand implements Command {
 
     @Override
     public void execute() throws InvalidCommandParameterException {
-        validate();
+        CommandValidator.validate(parameters, commandType);
         deleteContactFromRegistry();
     }
 
@@ -38,9 +38,4 @@ public class DeleteContactCommand implements Command {
         consolePrinter.print(message);
     }
 
-    private void validate() throws InvalidCommandParameterException {
-        if (parameters.size() != commandType.getParametersCount()) {
-            throw new InvalidCommandParameterException(commandType, parameters);
-        }
-    }
 }

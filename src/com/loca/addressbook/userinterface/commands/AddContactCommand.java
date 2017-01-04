@@ -21,7 +21,7 @@ public class AddContactCommand implements Command {
 
     @Override
     public void execute() throws InvalidCommandParameterException {
-    	validate();
+    	CommandValidator.validate(parameters, commandType);
     	addContactToRegistry();
     }
 
@@ -31,12 +31,6 @@ public class AddContactCommand implements Command {
     	String email = parameters.get(2);
     	registry.addContact(firstName, lastName, email);
     	consolePrinter.print(commandType.getSuccessMessage());
-	}
-
-	private void validate() throws InvalidCommandParameterException {
-		if (parameters.size() != commandType.getParametersCount()) {
-			throw new InvalidCommandParameterException(commandType, parameters);
-		}
 	}
     
 }
