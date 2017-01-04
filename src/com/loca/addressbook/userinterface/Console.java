@@ -13,9 +13,10 @@ public class Console implements ConsolePrinter {
  
     public void readUserInput() {
         Scanner scanner = new Scanner(System.in);
+        CommandLineFactory commandLineFactory = new CommandLineFactory();
 		while (!isQuit) {
 			String userInput = scanner.nextLine();
-			CommandLine commandLine = CommandLine.parse(userInput);
+			CommandLine commandLine = commandLineFactory.parse(userInput);
             inputHandler.handle(commandLine);
 		}
 		scanner.close();
