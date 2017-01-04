@@ -4,8 +4,11 @@ import com.loca.addressbook.userinterface.Console;
 
 import java.io.*;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class RegistryPersister {
+    private static final Logger log = Logger.getLogger(RegistryPersister.class.getName());
 
     private Registry registry;
 
@@ -25,7 +28,7 @@ public class RegistryPersister {
                 in.close();
                 fileIn.close();
             } catch (IOException | ClassNotFoundException e) {
-                e.printStackTrace();
+                log.log(Level.SEVERE, Thread.currentThread().getName() + ": InterruptedException caught in thread", e);
             }
         }
     }
@@ -36,7 +39,7 @@ public class RegistryPersister {
             ObjectOutputStream out = new ObjectOutputStream(fileOut);
             out.writeObject(registry.getContacts());
         } catch (IOException e) {
-            e.printStackTrace();
+            log.log(Level.SEVERE, Thread.currentThread().getName() + ": IOException caught in thread", e);
         }
     }
 }
