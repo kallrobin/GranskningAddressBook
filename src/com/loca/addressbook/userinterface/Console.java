@@ -5,7 +5,6 @@ import java.util.Scanner;
 public class Console implements ConsolePrinter {
 
 	private InputHandler inputHandler;
-	private boolean isQuit = false;
  
     public void registerInputHandler(InputHandler inputHandler) {
     	this.inputHandler = inputHandler;
@@ -13,21 +12,16 @@ public class Console implements ConsolePrinter {
  
     public void readUserInput() {
         Scanner scanner = new Scanner(System.in);
-		while (!isQuit) {
+		while (true) {
 			String userInput = scanner.nextLine();
 			CommandLine commandLine = CommandLine.parse(userInput);
             inputHandler.handle(commandLine);
 		}
-		scanner.close();
 	}
 
     @Override
     public void print(String output) {
         System.out.println(output);
-    }
-
-    public void close() {
-        isQuit = true;
     }
 
 }
