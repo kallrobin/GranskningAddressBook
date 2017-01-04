@@ -18,7 +18,7 @@ public class Application {
         application.start();
     }
 	
-	private static final String HOSTNAME_1 = "172.20.200.157";
+	private static final String HOSTNAME_1 = "172.20.200.247";
 	private static final String HOSTNAME_2 = "172.20.200.173";
 	private static final String HOSTNAME_3 = "172.20.201.62";
     private Console console = new Console();
@@ -26,10 +26,11 @@ public class Application {
     private RegistryPersister registryPersister = new RegistryPersister(registry);
     private AutoSave autoSave = new AutoSave(registryPersister);
     private RemoteRegistry remoteRegistry = new RemoteRegistry();
+    private CatalogueLoader catalogueLoader = new CatalogueLoader(remoteRegistry, makeHostNames() );
 
     public void start() {
     	initiateLocalContacts();
-		initiateServerContacts();
+		catalogueLoader.start();
 		autoSave.start();
 		initiateCommandLineInterface();
     }
@@ -38,16 +39,6 @@ public class Application {
         registryPersister.load();
 	}
 
-	private void initiateServerContacts() {
-    	List<String> hostNames = makeHostNames();
-		for(String hostName : hostNames) {
-
-			Runnable runnable = new CatalogueLoader(remoteRegistry, hostName);
-			Thread catalogueLoader = new Thread(runnable);
-	        catalogueLoader.setDaemon(true);
-	        catalogueLoader.start();
-		}
-	}
 	
 	private List<String> makeHostNames() {
 		List<String> hostNames = new ArrayList<>();

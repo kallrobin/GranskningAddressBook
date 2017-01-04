@@ -1,24 +1,29 @@
 package com.loca.addressbook.remoteregistry;
 
-public class CatalogueLoader implements Runnable{
+import java.util.ArrayList;
+import java.util.List;
+
+public class CatalogueLoader {
     private static final int PORT = 61616;
     private RemoteCatalogueFactory catalogueFactory = new RemoteCatalogueFactory(PORT);
     private RemoteRegistry remoteRegistry;
-    private String hostName;
+    private List<String> hosts = new ArrayList<>();
 
-    public CatalogueLoader(RemoteRegistry remoteRegistry, String hostName) {
+    public CatalogueLoader(RemoteRegistry remoteRegistry, List<String> hosts) {
         this.remoteRegistry = remoteRegistry;
-        this.hostName = hostName;
+        this.hosts = hosts;
     }
 
-    @Override
-    public void run() {
-        RemoteCatalogueProxy remoteCatalogueProxy = catalogueFactory.create(hostName);
 
-        for(String contact : remoteCatalogueProxy.getContacts()) {
-            String[] splittedList = contact.split(" ");
-            remoteRegistry.add(splittedList[0],splittedList[1],splittedList[2],splittedList[3]);
+    public void start() {
+        for (String host : hosts) {
+            new Thread(() -> {
+                RemoteCatalogueProxy remoteCatalogueProxy = catalogueFactory.create(host);
+                for (String contact : remoteCatalogueProxy.getContacts()) {
+                    String[] splittedList = contact.split(" ");
+                    remoteRegistry.add(splittedList[0], splittedList[1], splittedList[2], splittedList[3]);
+                }
+            }).start();
         }
-
     }
 }
