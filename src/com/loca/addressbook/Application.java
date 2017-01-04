@@ -1,7 +1,10 @@
 package com.loca.addressbook;
 
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.LogManager;
 
 import com.loca.addressbook.registry.AutoSave;
 import com.loca.addressbook.registry.Registry;
@@ -27,6 +30,7 @@ public class Application {
     private RemoteRegistry remoteRegistry = new RemoteRegistry();
 
     public void start() {
+		setupLogging();
     	initiateLocalContacts();
 		initiateServerContacts();
 		startAutoSaveDaemon();
@@ -70,6 +74,15 @@ public class Application {
 	public void quit() {
 		registryPersister.save();
 		console.close();
+	}
+
+	public static void setupLogging() {
+		String loggingFilePath = "logging.properties";
+		try (FileInputStream fileInputStream = new FileInputStream(loggingFilePath)) {
+			LogManager.getLogManager().readConfiguration(fileInputStream);
+		} catch (IOException e) {
+			throw new RuntimeException("Could not load log properties.", e);
+		}
 	}
 		
 }
