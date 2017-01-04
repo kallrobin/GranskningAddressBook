@@ -28,7 +28,7 @@ public class Registry {
             if (contact.getId().equals(uuid)) {
                 localContactList.remove(i);
                 contactFound = true;
-                return;
+                break;
             }
             i++;
         }
