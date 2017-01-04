@@ -29,7 +29,7 @@ public class Application {
     private RegistryPersister registryPersister = new RegistryPersister(registry);
     private RemoteRegistry remoteRegistry = new RemoteRegistry();
 
-    public void start() {
+    private void start() {
 		setupLogging();
     	initiateLocalContacts();
 		initiateServerContacts();
@@ -76,7 +76,7 @@ public class Application {
 		console.close();
 	}
 
-	public static void setupLogging() {
+	private void setupLogging() {
 		String loggingFilePath = "logging.properties";
 		try (FileInputStream fileInputStream = new FileInputStream(loggingFilePath)) {
 			LogManager.getLogManager().readConfiguration(fileInputStream);
