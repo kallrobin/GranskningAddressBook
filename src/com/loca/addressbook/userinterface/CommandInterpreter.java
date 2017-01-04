@@ -23,49 +23,33 @@ public class CommandInterpreter {
     }
 
     public Command interpret(CommandLine commandLine) throws InvalidCommandException {
-        CommandType commandType = findCommandType(commandLine.getCommand());
-        Command command = createCommand(commandType, commandLine.getParameters());
-        return command;
-	}
 
-    private CommandType findCommandType(String command) throws InvalidCommandException {
-	    CommandType inputCommandType = null;
-	    for (CommandType commandType: CommandType.values()) {
-	        if (commandType.getCommandName().equals(command)) {
-	            inputCommandType = commandType;
-	            break;
-            }
-        }
-        if (inputCommandType == null) {
-            throw new InvalidCommandException(command);
-        }
-        return inputCommandType;
-    }
+        String command = commandLine.getCommand();
+        Command returnCommand;
 
-    private Command createCommand(CommandType commandType, List<String> parameters) {
-	    Command command = null;
-	    switch (commandType) {
-            case ADD:
-                command = new AddContactCommand(consolePrinter, registry, parameters);
+        switch (command) {
+            case "add":
+                returnCommand = new AddContactCommand(consolePrinter, registry, commandLine.getParameters());
                 break;
-            case LIST:
-                command = new ListCommand(consolePrinter, registry, remoteRegistry, parameters);
+            case "delete":
+                returnCommand = new DeleteContactCommand(consolePrinter, registry, commandLine.getParameters());
                 break;
-            case DELETE:
-                command = new DeleteContactCommand(consolePrinter, registry, parameters);
+            case "list":
+                returnCommand = new ListCommand(consolePrinter, registry, remoteRegistry, commandLine.getParameters());
                 break;
-            case HELP:
-                command = new HelpCommand(consolePrinter, parameters);
+            case "search":
+                returnCommand = new SearchCommand(consolePrinter, registry, remoteRegistry, commandLine.getParameters());
                 break;
-            case SEARCH:
-                command = new SearchCommand(consolePrinter, registry, remoteRegistry, parameters);
+            case "quit":
+                returnCommand = new QuitCommand(consolePrinter, commandLine.getParameters(), application);
                 break;
-            case QUIT:
-                command = new QuitCommand(consolePrinter, parameters, application);
+            case "help":
+                returnCommand = new HelpCommand(consolePrinter, commandLine.getParameters());
                 break;
+            default:
+                throw new InvalidCommandException(command + " is not a valid command");
         }
-
-        return command;
+        return returnCommand;
     }
 
 

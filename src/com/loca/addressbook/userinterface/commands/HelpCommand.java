@@ -2,6 +2,7 @@ package com.loca.addressbook.userinterface.commands;
 
 import com.loca.addressbook.exceptions.InvalidCommandParameterException;
 import com.loca.addressbook.userinterface.ConsolePrinter;
+import com.sun.org.apache.bcel.internal.generic.NEW;
 
 import java.util.List;
 
@@ -25,14 +26,14 @@ public class HelpCommand implements Command {
     }
 
     private String makeHelpText() {
-        StringBuilder helpText = new StringBuilder(100);
-        for (CommandType commandType: CommandType.values()) {
-            helpText.append(commandType.getCommandName());
-            helpText.append(TAB);
-            helpText.append(commandType.getDescription());
-            helpText.append(NEW_LINE);
-        }
-        return helpText.toString();
+        String helpText;
+        helpText = "Add" + TAB + TAB + "Adds a contact to the local addressbook" + NEW_LINE +
+                "Delete" + TAB + "Deletes a contact with the given UUID" + NEW_LINE +
+                "Search" + TAB + "Search for contacts by \"Starts With\"" + NEW_LINE +
+                "List" + TAB + "Lists all the contacts" + NEW_LINE +
+                "Help" + TAB + "Lists the help meny" + NEW_LINE +
+                "Quit" + TAB + "Quits the application.";
+        return helpText;
     }
 
 
