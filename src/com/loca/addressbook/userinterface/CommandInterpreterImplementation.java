@@ -8,14 +8,14 @@ import com.loca.addressbook.exceptions.InvalidCommandException;
 
 import java.util.List;
 
-public class CommandInterpreter {
+public class CommandInterpreterImplementation implements CommandInterpreter {
 
     private Registry registry;
     private RemoteRegistry remoteRegistry;
     private ConsolePrinter consolePrinter;
     private Application application;
 
-    public CommandInterpreter(ConsolePrinter consolePrinter, Registry registry, RemoteRegistry remoteRegistry, Application application) {
+    public CommandInterpreterImplementation(ConsolePrinter consolePrinter, Registry registry, RemoteRegistry remoteRegistry, Application application) {
         this.registry = registry;
         this.remoteRegistry = remoteRegistry;
         this.consolePrinter = consolePrinter;

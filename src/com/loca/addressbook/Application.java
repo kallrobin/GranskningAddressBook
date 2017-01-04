@@ -8,9 +8,7 @@ import com.loca.addressbook.registry.Registry;
 import com.loca.addressbook.registry.RegistryPersister;
 import com.loca.addressbook.remoteregistry.CatalogueLoader;
 import com.loca.addressbook.remoteregistry.RemoteRegistry;
-import com.loca.addressbook.userinterface.CommandLineInterface;
-import com.loca.addressbook.userinterface.Console;
-import com.loca.addressbook.userinterface.SystemConsole;
+import com.loca.addressbook.userinterface.*;
 
 public class Application {
 
@@ -28,7 +26,8 @@ public class Application {
     private AutoSave autoSave = new AutoSave(registryPersister);
     private RemoteRegistry remoteRegistry = new RemoteRegistry();
     private CatalogueLoader catalogueLoader = new CatalogueLoader(remoteRegistry, makeHostNames());
-	private CommandLineInterface commandLineInterface = new CommandLineInterface(registry, remoteRegistry, systemConsole, this);
+    private CommandInterpreterImplementation commandInterpreter = new CommandInterpreterImplementation((ConsolePrinter)systemConsole, registry, remoteRegistry, this);
+	private CommandLineInterface commandLineInterface = new CommandLineInterface(commandInterpreter, systemConsole);
 
     public void start() {
     	initiateLocalContacts();
