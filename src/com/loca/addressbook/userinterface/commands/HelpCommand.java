@@ -19,7 +19,7 @@ public class HelpCommand implements Command {
 
     @Override
     public void execute() throws InvalidCommandParameterException {
-        validate();
+        CommandValidator.validate(parameters, commandType);
         String helpText = makeHelpText();
         showHelpText(helpText);
 
@@ -39,12 +39,6 @@ public class HelpCommand implements Command {
 
     private void showHelpText(String helpText) {
         consolePrinter.print(helpText);
-    }
-
-    private void validate() throws InvalidCommandParameterException {
-        if (parameters.size() != commandType.getParametersCount()) {
-            throw new InvalidCommandParameterException(commandType, parameters);
-        }
     }
 
 }
