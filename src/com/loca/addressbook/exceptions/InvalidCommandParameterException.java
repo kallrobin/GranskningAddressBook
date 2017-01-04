@@ -7,7 +7,7 @@ import java.util.List;
 public class InvalidCommandParameterException extends Exception {
     private static final String QUOTATION_MARK = "\"";
 
-    public InvalidCommandParameterException (CommandType commandType, List<String> parameters) {
-        super("Command Line failed! Received " + parameters.size() + " parameters while expecting " + commandType.getParametersCount() + " parameters.");
+    public InvalidCommandParameterException (int actual, int expected) {
+        super("Command Line failed! Received " + actual + " parameters while expecting " + expected + " parameters.");
     }
 }

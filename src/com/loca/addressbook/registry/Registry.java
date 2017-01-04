@@ -35,7 +35,7 @@ public class Registry {
         if (!contactFound){
             System.out.println("Delete failed! Could not find any contact matching ID: " + uuid + " in local address book.");
         } else{
-            System.out.println("Deleted the contact with ID" + uuid + ".");
+            System.out.println("Deleted the contact with ID " + uuid + ".");
         }
     }
 

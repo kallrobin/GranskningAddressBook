@@ -27,8 +27,8 @@ public class QuitCommand implements Command {
     }
 
     private void validate() throws InvalidCommandParameterException {
-        if (parameters.size() != commandType.getParametersCount()) {
-            throw new InvalidCommandParameterException(commandType, parameters);
+        if (parameters.size() != 0) {
+            throw new InvalidCommandParameterException(parameters.size(), 0);
         }
     }
 }

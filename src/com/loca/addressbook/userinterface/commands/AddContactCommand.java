@@ -8,7 +8,7 @@ import com.loca.addressbook.exceptions.InvalidCommandParameterException;
 
 public class AddContactCommand implements Command {
 
-	private CommandType commandType = CommandType.ADD;
+	//private CommandType commandType = CommandType.ADD;
 	private Registry registry;
 	private List<String> parameters;
 	private ConsolePrinter consolePrinter;
@@ -30,12 +30,12 @@ public class AddContactCommand implements Command {
     	String lastName = parameters.get(1);
     	String email = parameters.get(2);
     	registry.addContact(firstName, lastName, email);
-    	consolePrinter.print(commandType.getSuccessMessage());
+    	consolePrinter.print("Added the new contact.");
 	}
 
 	private void validate() throws InvalidCommandParameterException {
-		if (parameters.size() != commandType.getParametersCount()) {
-			throw new InvalidCommandParameterException(commandType, parameters);
+		if (parameters.size() != 3) {
+			throw new InvalidCommandParameterException(parameters.size(), 3);
 		}
 	}
     

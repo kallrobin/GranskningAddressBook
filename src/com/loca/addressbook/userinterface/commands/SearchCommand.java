@@ -58,8 +58,8 @@ public class SearchCommand implements Command {
 	}
 
 	private void validate() throws InvalidCommandParameterException {
-		if (parameters.size() != commandType.getParametersCount()) {
-			throw new InvalidCommandParameterException(commandType, parameters);
+		if (parameters.size() != 1) {
+			throw new InvalidCommandParameterException(parameters.size(), 1);
 		}
 	}
 }
