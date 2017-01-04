@@ -8,7 +8,6 @@ import java.util.List;
 
 public class QuitCommand implements Command {
 
-    private CommandType commandType = CommandType.QUIT;
     private Application application;
     private List<String> parameters;
     private ConsolePrinter consolePrinter;
@@ -22,7 +21,7 @@ public class QuitCommand implements Command {
     @Override
     public void execute() throws InvalidCommandParameterException {
         validate();
-        consolePrinter.print(commandType.getSuccessMessage());
+        consolePrinter.print("Quitting...");
         application.quit();
     }
 

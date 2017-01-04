@@ -9,7 +9,7 @@ import java.util.List;
 
 public class DeleteContactCommand implements Command {
 
-    private CommandType commandType = CommandType.DELETE;
+
     private ConsolePrinter consolePrinter;
     private Registry registry;
     private List<String> parameters;

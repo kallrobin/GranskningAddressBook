@@ -12,8 +12,7 @@ import com.loca.addressbook.userinterface.ContactFormatter;
 import com.loca.addressbook.userinterface.ContactListSorter;
 
 public class SearchCommand implements Command {
-	
-	private CommandType commandType = CommandType.SEARCH;
+
 	private ConsolePrinter consolePrinter;
 	private Registry registry;
 	private RemoteRegistry remoteRegistry;
@@ -40,7 +39,7 @@ public class SearchCommand implements Command {
 		contacts.addAll(remoteRegistry.search(searchWord));
 
 		if (contacts.isEmpty()) {
-			output = commandType.getFailureMessage();
+			output = "Search failed! Could not find any matching contact.";
 		} else {
 			List<Contact> sortedContacts = ContactListSorter.sort(contacts);
 			output = makeOutput(sortedContacts);

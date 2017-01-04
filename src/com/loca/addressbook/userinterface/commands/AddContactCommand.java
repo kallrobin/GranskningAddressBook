@@ -8,7 +8,7 @@ import com.loca.addressbook.exceptions.InvalidCommandParameterException;
 
 public class AddContactCommand implements Command {
 
-	//private CommandType commandType = CommandType.ADD;
+
 	private Registry registry;
 	private List<String> parameters;
 	private ConsolePrinter consolePrinter;

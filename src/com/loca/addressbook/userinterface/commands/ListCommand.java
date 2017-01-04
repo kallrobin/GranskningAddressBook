@@ -12,8 +12,7 @@ import com.loca.addressbook.userinterface.ContactFormatter;
 import com.loca.addressbook.userinterface.ContactListSorter;
 
 public class ListCommand implements Command {
-	
-	private CommandType commandType = CommandType.LIST;
+
 	private ConsolePrinter consolePrinter;
 	private Registry registry;
 	private RemoteRegistry remoteRegistry;
@@ -38,7 +37,7 @@ public class ListCommand implements Command {
 		contacts.addAll(registry.getContacts());
 		contacts.addAll(remoteRegistry.getContacts());
 		if (contacts.isEmpty()) {
-			output = commandType.getFailureMessage();
+			output = "List failed! The contact list is empty.";
 		} else {
 			List<Contact> sortedContacts = ContactListSorter.sort(contacts);
 			output = makeOutput(sortedContacts);
