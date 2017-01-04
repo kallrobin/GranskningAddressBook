@@ -7,13 +7,13 @@ import com.loca.addressbook.userinterface.commands.Command;
 import com.loca.addressbook.exceptions.InvalidCommandException;
 import com.loca.addressbook.exceptions.InvalidCommandParameterException;
 
-public class CommandLineInterface implements InputHandler {
+public class CommandLineUserInterface implements InputHandler {
 
     private static final String WELCOME_MESSAGE = "Welcome to AddressBook 2.0!";
 	private Console console;
 	private CommandInterpreter commandInterpreter;
 
-	public CommandLineInterface(Registry registry, RemoteRegistry remoteRegistry, Console console, Application application) {
+	public CommandLineUserInterface(Registry registry, RemoteRegistry remoteRegistry, Console console, Application application) {
 	    this.console = console;
 	    this.commandInterpreter = new CommandInterpreter(console, registry, remoteRegistry, application);
 	    console.registerInputHandler(this);

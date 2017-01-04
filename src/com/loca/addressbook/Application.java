@@ -8,7 +8,7 @@ import com.loca.addressbook.registry.Registry;
 import com.loca.addressbook.registry.RegistryPersister;
 import com.loca.addressbook.remoteregistry.CatalogueLoader;
 import com.loca.addressbook.remoteregistry.RemoteRegistry;
-import com.loca.addressbook.userinterface.CommandLineInterface;
+import com.loca.addressbook.userinterface.CommandLineUserInterface;
 import com.loca.addressbook.userinterface.Console;
 
 public class Application {
@@ -63,8 +63,8 @@ public class Application {
 	}
 	
 	private void initiateCommandLineInterface() {
-		CommandLineInterface commandLineInterface = new CommandLineInterface(registry, remoteRegistry, console, this);
-		commandLineInterface.start();
+		CommandLineUserInterface commandLineUserInterface = new CommandLineUserInterface(registry, remoteRegistry, console, this);
+		commandLineUserInterface.start();
 	}
 	 
 	public void quit() {
