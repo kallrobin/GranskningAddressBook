@@ -4,6 +4,7 @@ public class AutoSave implements Runnable {
 
     private RegistryPersister registryPersister;
 
+
     public AutoSave(RegistryPersister registryPersister) {
         this.registryPersister = registryPersister;
     }
@@ -17,7 +18,7 @@ public class AutoSave implements Runnable {
                 Thread.sleep(5000);
                 registryPersister.save();
             } catch (InterruptedException e) {
-                System.err.println("Autosave interrupted");
+                e.printStackTrace();
             }
         }
     }

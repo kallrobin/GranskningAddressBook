@@ -27,7 +27,7 @@ public class RegistryPersister {
                 in.close();
                 fileIn.close();
             } catch (IOException | ClassNotFoundException e) {
-                console.print(e.getMessage());
+                e.printStackTrace();
             }
         }
     }
@@ -38,7 +38,7 @@ public class RegistryPersister {
             ObjectOutputStream out = new ObjectOutputStream(fileOut);
             out.writeObject(registry.getContacts());
         } catch (IOException e) {
-            console.print(e.getMessage());
+            e.printStackTrace();
         }
     }
 }
