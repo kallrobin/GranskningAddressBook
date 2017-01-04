@@ -1,6 +1,6 @@
 package com.loca.addressbook.registry;
 
-public class AutoSave implements Runnable {
+public class AutoSave {
 
     private RegistryPersister registryPersister;
 
@@ -9,8 +9,8 @@ public class AutoSave implements Runnable {
         this.registryPersister = registryPersister;
     }
 
-    @Override
-    public void run() {
+
+    public void start() {
         Thread.currentThread().setName("AutoSave");
         //registryPersister.load();
         new Thread(() -> {

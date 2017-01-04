@@ -30,7 +30,7 @@ public class Application {
     public void start() {
     	initiateLocalContacts();
 		initiateServerContacts();
-		autoSave.run();
+		autoSave.start();
 		initiateCommandLineInterface();
     }
 
