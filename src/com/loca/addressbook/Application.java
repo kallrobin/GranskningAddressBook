@@ -41,6 +41,7 @@ public class Application {
 	private void initiateServerContacts() {
     	List<String> hostNames = makeHostNames();
 		for(String hostName : hostNames) {
+
 			Runnable runnable = new CatalogueLoader(remoteRegistry, hostName);
 			Thread catalogueLoader = new Thread(runnable);
 	        catalogueLoader.setDaemon(true);
