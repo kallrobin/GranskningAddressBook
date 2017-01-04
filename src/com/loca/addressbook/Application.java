@@ -24,12 +24,13 @@ public class Application {
     private Console console = new Console();
     private Registry registry = new Registry();
     private RegistryPersister registryPersister = new RegistryPersister(registry);
+    private AutoSave autoSave = new AutoSave(registryPersister);
     private RemoteRegistry remoteRegistry = new RemoteRegistry();
 
     public void start() {
     	initiateLocalContacts();
 		initiateServerContacts();
-		startAutoSaveDaemon();
+		autoSave.run();
 		initiateCommandLineInterface();
     }
 
@@ -54,13 +55,6 @@ public class Application {
 		hostNames.add(HOSTNAME_3);
 		return hostNames;
 	}
-
-	private void startAutoSaveDaemon() {
-		Runnable runnable  = new AutoSave(registryPersister);
-    	Thread autoSave = new Thread(runnable);
-        autoSave.setDaemon(true);
-        autoSave.start();
-	}
 	
 	private void initiateCommandLineInterface() {
 		CommandLineInterface commandLineInterface = new CommandLineInterface(registry, remoteRegistry, console, this);
@@ -69,6 +63,7 @@ public class Application {
 	 
 	public void quit() {
 		registryPersister.save();
+		System.exit(0);
 		console.close();
 	}
 		

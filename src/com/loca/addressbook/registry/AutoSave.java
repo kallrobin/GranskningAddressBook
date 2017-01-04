@@ -12,14 +12,16 @@ public class AutoSave implements Runnable {
     @Override
     public void run() {
         Thread.currentThread().setName("AutoSave");
-        registryPersister.load();
-        while (true) {
-            try {
-                Thread.sleep(5000);
-                registryPersister.save();
-            } catch (InterruptedException e) {
-                e.printStackTrace();
+        //registryPersister.load();
+        new Thread(() -> {
+            while (true) {
+                try {
+                    Thread.sleep(5000);
+                    registryPersister.save();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
             }
-        }
+        }).start();
     }
 }
