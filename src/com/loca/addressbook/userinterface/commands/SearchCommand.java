@@ -28,7 +28,7 @@ public class SearchCommand implements Command {
 
     @Override
     public void execute() throws InvalidCommandParameterException {
-    	validate();
+		CommandValidator.validate(parameters, commandType);
     	searchContacts();
     }
     
@@ -55,11 +55,5 @@ public class SearchCommand implements Command {
 			output.append(formattedContact);
 		}
 		return output.toString();
-	}
-
-	private void validate() throws InvalidCommandParameterException {
-		if (parameters.size() != commandType.getParametersCount()) {
-			throw new InvalidCommandParameterException(commandType, parameters);
-		}
 	}
 }
