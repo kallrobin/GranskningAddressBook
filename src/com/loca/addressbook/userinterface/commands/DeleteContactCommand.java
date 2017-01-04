@@ -28,14 +28,7 @@ public class DeleteContactCommand implements Command {
 
     private void deleteContactFromRegistry() {
         String uuid = parameters.get(0);
-        String message;
-        try {
-        	registry.deleteContact(uuid);
-        	message = commandType.getSuccessMessage();
-        } catch (InvalidContactId e) {
-        	message = commandType.getFailureMessage();
-        }
-        consolePrinter.print(message);
+        registry.deleteContact(uuid);
     }
 
     private void validate() throws InvalidCommandParameterException {

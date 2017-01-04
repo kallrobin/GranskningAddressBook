@@ -1,6 +1,7 @@
 package com.loca.addressbook.registry;
 
 import com.loca.addressbook.exceptions.InvalidContactId;
+import com.sun.org.apache.xpath.internal.SourceTree;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,17 +21,22 @@ public class Registry {
         return this.localContactList;
     }
 
-    public void deleteContact(String uuid) throws InvalidContactId {
-
+    public void deleteContact(String uuid) {
+        boolean contactFound = false;
         int i = 0;
         for (Contact contact : localContactList) {
             if (contact.getId().equals(uuid)) {
                 localContactList.remove(i);
+                contactFound = true;
                 return;
             }
             i++;
         }
-        throw new InvalidContactId();
+        if (!contactFound){
+            System.out.println("Delete failed! Could not find any contact matching ID: " + uuid + " in local address book.");
+        } else{
+            System.out.println("Deleted the contact with ID" + uuid + ".");
+        }
     }
 
     public List<Contact> search(String search) {
