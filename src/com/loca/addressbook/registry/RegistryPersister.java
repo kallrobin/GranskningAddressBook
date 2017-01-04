@@ -1,6 +1,5 @@
 package com.loca.addressbook.registry;
 
-import com.loca.addressbook.userinterface.*;
 import com.loca.addressbook.userinterface.Console;
 
 import java.io.*;
@@ -9,7 +8,6 @@ import java.util.List;
 public class RegistryPersister {
 
     private Registry registry;
-    private Console console;
 
     public RegistryPersister(Registry register) {
         this.registry = register;
