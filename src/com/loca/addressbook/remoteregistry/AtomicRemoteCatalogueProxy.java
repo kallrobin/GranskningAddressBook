@@ -1,7 +1,5 @@
 package com.loca.addressbook.remoteregistry;
 
-import com.loca.addressbook.registry.RegistryPersister;
-
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -13,12 +11,10 @@ public class AtomicRemoteCatalogueProxy implements RemoteCatalogueProxy {
     private static final Logger log = Logger.getLogger(AtomicRemoteCatalogueProxy.class.getName());
 
     private CatalogueClient catalogueClient;
-    private String host;
     private List<String> remoteContactList = new ArrayList<>();
 
     public AtomicRemoteCatalogueProxy(String host, int port) {
         catalogueClient = new CatalogueClient(host, port);
-        this.host = host;
     }
 
     @Override
@@ -38,7 +34,7 @@ public class AtomicRemoteCatalogueProxy implements RemoteCatalogueProxy {
         } catch (IOException e) {
             log.log(Level.SEVERE, Thread.currentThread().getName() + ": IOException caught in thread", e);
         } finally {
-            try {System.err.println("Connection error (" + this.host + ")");
+            try {
                 catalogueClient.disconnect();
             } catch (IOException e) {
                 log.log(Level.SEVERE, Thread.currentThread().getName() + ": IOException caught in thread", e);
